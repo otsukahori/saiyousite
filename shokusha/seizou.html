@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>製造 業務内容 - 株式会社オーツカ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--teal:#0E857B;--teal-d:#096059;--teal-l:#2aada2;--pale:#f0faf9;--pale2:#e0f4f2;--text:#0d2624;--sub:#4a7a77;--line:#c8e8e6;--white:#ffffff;--yellow:#FFD600;--orange:#e07b00}
+body{font-family:"Noto Sans JP",sans-serif;background:#f5fafa;color:var(--text);line-height:1.7}
+.hero{background:var(--teal-d);padding:64px 40px 56px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 55% 80% at 90% 50%,rgba(14,133,123,.45) 0%,transparent 65%),radial-gradient(ellipse 40% 60% at 10% 100%,rgba(42,173,162,.2) 0%,transparent 60%)}
+.hero__inner{max-width:960px;margin:0 auto;position:relative}
+.hero__breadcrumb{font-family:"DM Sans",sans-serif;font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-bottom:24px}
+.hero__breadcrumb a{color:rgba(255,255,255,.6);text-decoration:none}
+.hero__breadcrumb span{margin:0 8px}
+.hero__eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.hero__dept{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-l);background:rgba(42,173,162,.15);border:1px solid rgba(42,173,162,.4);padding:4px 12px;border-radius:999px}
+.hero__tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag-fresh{font-size:11px;font-weight:700;color:#1a1a1a;background:var(--yellow);padding:3px 10px;border-radius:999px}
+.tag-career{font-size:11px;font-weight:700;color:#1a1a1a;background:var(--orange);border:1px solid #c06800;padding:3px 10px;border-radius:999px}
+.hero__title{font-size:clamp(36px,5vw,58px);font-weight:900;color:var(--white);letter-spacing:-.02em;line-height:1.1;margin-bottom:14px}
+.hero__sub{font-size:15px;color:rgba(255,255,255,.65);max-width:520px}
+.page{max-width:960px;margin:0 auto;padding:64px 32px 100px}
+.sec-heading{display:flex;align-items:center;gap:14px;margin-bottom:32px}
+.sec-heading__bar{width:4px;height:28px;background:var(--teal);border-radius:99px;flex-shrink:0}
+.sec-heading__text{font-size:20px;font-weight:800;color:var(--text);letter-spacing:.02em}
+.sec-heading__en{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sub);margin-left:2px}
+.work-list{margin-bottom:12px}
+.work-item{display:grid;grid-template-columns:180px 1fr;background:var(--white);border:1.5px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:16px;transition:box-shadow .2s,transform .2s;animation:fadeUp .4s ease both}
+.work-item:hover{box-shadow:0 8px 32px rgba(14,133,123,.12);transform:translateY(-2px)}
+.work-item:nth-child(1){animation-delay:.05s}.work-item:nth-child(2){animation-delay:.12s}.work-item:nth-child(3){animation-delay:.19s}
+.work-item__label{background:var(--teal);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 20px;gap:10px;position:relative}
+.work-item__label::after{content:"";position:absolute;right:-12px;top:50%;transform:translateY(-50%);border:12px solid transparent;border-left-color:var(--teal);border-right:0;z-index:1}
+.work-item__icon{width:40px;height:40px;background:rgba(255,255,255,.15);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.work-item__icon svg{width:22px;height:22px}
+.work-item__name{font-size:13px;font-weight:800;color:var(--white);text-align:center;line-height:1.4;white-space:pre-line}
+.work-item__body{padding:28px 32px;display:flex;flex-direction:column;justify-content:center}
+.work-item__desc{font-size:14px;line-height:1.85;color:#2a4a47}
+.work-note{font-size:12px;color:var(--sub);margin-bottom:8px;padding-left:4px}
+.timeline{position:relative;margin-bottom:12px}
+.timeline::before{content:"";position:absolute;left:72px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--teal),var(--pale2))}
+.tl-item{display:grid;grid-template-columns:72px 1fr;gap:0 24px;margin-bottom:6px;position:relative;animation:fadeUp .4s ease both}
+.tl-item:nth-child(1){animation-delay:.04s}.tl-item:nth-child(2){animation-delay:.08s}.tl-item:nth-child(3){animation-delay:.12s}
+.tl-item:nth-child(4){animation-delay:.16s}.tl-item:nth-child(5){animation-delay:.20s}.tl-item:nth-child(6){animation-delay:.24s}.tl-item:nth-child(7){animation-delay:.28s}
+.tl-item__time{font-family:"DM Sans",sans-serif;font-size:13px;font-weight:700;color:var(--teal);text-align:right;padding-top:18px;letter-spacing:.04em}
+.tl-item__card{background:var(--white);border:1.5px solid var(--line);border-radius:14px;padding:16px 24px;margin-bottom:10px;position:relative;transition:border-color .2s,box-shadow .2s}
+.tl-item__card::before{content:"";position:absolute;left:-8px;top:20px;width:14px;height:14px;border-radius:50%;background:var(--teal);border:3px solid var(--white);box-shadow:0 0 0 2px var(--teal)}
+.tl-item__card:hover{border-color:var(--teal-l);box-shadow:0 4px 16px rgba(14,133,123,.1)}
+.tl-item__label{font-size:13px;font-weight:800;color:var(--teal-d);margin-bottom:4px}
+.tl-item__text{font-size:13px;color:var(--sub);line-height:1.7}
+.tl-item:first-child .tl-item__card,.tl-item:last-child .tl-item__card{background:var(--pale);border-color:var(--teal-l)}
+.tl-note{font-size:12px;color:var(--sub);padding-left:96px;margin-bottom:56px}
+.staff-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;margin-bottom:12px}
+.staff-card{background:var(--white);border:1.5px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .2s,box-shadow .2s;animation:fadeUp .4s ease both}
+.staff-card:nth-child(1){animation-delay:.06s}.staff-card:nth-child(2){animation-delay:.14s}
+.staff-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(14,133,123,.14)}
+.staff-card__photo{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.staff-card__photo-placeholder{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,var(--pale2) 0%,var(--pale) 100%);display:flex;align-items:center;justify-content:center}
+.staff-card__photo-placeholder svg{width:56px;height:56px;opacity:.3}
+.staff-card__body{padding:20px 24px 24px}
+.staff-card__role{font-family:"DM Sans",sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.staff-card__name{font-size:18px;font-weight:800;color:var(--text);margin-bottom:2px}
+.staff-card__tenure{font-size:12px;color:var(--sub);margin-bottom:14px}
+.staff-card__divider{height:1px;background:var(--line);margin-bottom:14px}
+.staff-card__comment{font-size:13px;line-height:1.8;color:#2a4a47}
+.shift-columns{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:16px}
+.shift-col{background:var(--white);border:1.5px solid var(--line);border-radius:20px;overflow:hidden}
+.shift-col__header{display:flex;align-items:center;gap:10px;padding:14px 24px;font-size:15px;font-weight:800;letter-spacing:.04em}
+.shift-col__header svg{width:18px;height:18px}
+.shift-col__header--day{background:var(--teal);color:var(--white)}
+.shift-col__header--night{background:#1a2a4a;color:var(--white)}
+.shift-col .shift-panel{padding:24px 20px 20px}
+.shift-col .timeline::before{left:56px}
+.shift-col .tl-item{grid-template-columns:56px 1fr;gap:0 14px}
+.shift-col .tl-item__time{font-size:12px;padding-top:16px}
+.shift-col .tl-item__card{padding:13px 18px;margin-bottom:8px}
+.shift-col .tl-item__label{font-size:12px}
+.shift-col .tl-item__text{font-size:12px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:680px){
+  .hero{padding:48px 20px 44px}.page{padding:48px 20px 80px}
+  .work-item{grid-template-columns:1fr}
+  .work-item__label{flex-direction:row;justify-content:flex-start;padding:18px 20px;gap:14px;border-radius:0}
+  .work-item__label::after{display:none}
+  .work-item__name{font-size:14px;text-align:left;white-space:normal}
+  .timeline::before{left:56px}.tl-item{grid-template-columns:56px 1fr;gap:0 18px}.tl-note{padding-left:74px}
+  .shift-columns{grid-template-columns:1fr}
+}
+</style>
+<style>.site-nav{position:sticky;top:0;z-index:1000;background:#096059;box-shadow:0 2px 12px rgba(0,0,0,.18)}.site-nav__inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;padding:0 24px;height:56px;gap:32px}.site-nav__logo{font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0}.site-nav__list{list-style:none;display:flex;gap:4px;margin:0;padding:0;margin-left:auto}.site-nav__list>li>a{display:block;padding:0 14px;height:56px;line-height:56px;color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:500;transition:background .15s}.site-nav__list>li>a:hover{background:rgba(255,255,255,.12);color:#fff}.has-drop{position:relative}.drop{display:none;position:absolute;top:56px;left:0;background:#fff;list-style:none;margin:0;padding:8px 0;min-width:210px;border-radius:0 0 12px 12px;box-shadow:0 8px 32px rgba(0,0,0,.14)}.has-drop:hover .drop{display:block}.drop li a{display:block;padding:10px 20px;font-size:13px;color:#0d2624;text-decoration:none}.drop li a:hover{background:#f0faf9;color:#096059}.site-nav__toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}.site-nav__toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}@media(max-width:680px){.site-nav__toggle{display:flex}.site-nav__list{display:none;flex-direction:column;position:absolute;top:56px;left:0;right:0;background:#096059;padding:12px 0;z-index:999}.site-nav.open .site-nav__list{display:flex}.has-drop:hover .drop{display:none}.drop{display:block!important;position:static;box-shadow:none;background:rgba(0,0,0,.15);border-radius:0}.drop li a{color:rgba(255,255,255,.8);padding:8px 32px}.site-nav__list>li>a{height:auto;line-height:1;padding:12px 24px}}</style>
+</head>
+<body>
+<nav class="site-nav"><div class="site-nav__inner"><a class="site-nav__logo" href="../index.html">株式会社オーツカ 採用サイト</a><button class="site-nav__toggle" aria-label="メニュー" onclick="this.closest('.site-nav').classList.toggle('open')"><span></span><span></span><span></span></button><ul class="site-nav__list"><li><a href="../index.html">ホーム</a></li><li class="has-drop"><a href="../shokusha/index.html">職種紹介</a><ul class="drop"><li><a href="../shokusha/seizou.html">製造</a></li><li><a href="../shokusha/kensa.html">検査</a></li><li><a href="../shokusha/hozen.html">保全</a></li><li><a href="../shokusha/eigyo.html">営業</a></li><li><a href="../shokusha/eigyo-jimu.html">営業事務</a></li><li><a href="../shokusha/seisan-gijutsu.html">生産技術</a></li><li><a href="../shokusha/kaihatsu-gijutsu.html">開発技術</a></li><li><a href="../shokusha/qa-customer.html">品質保証（顧客対応）</a></li><li><a href="../shokusha/qa-kensa.html">品質保証（検査）</a></li><li><a href="../shokusha/chotatsu.html">調達</a></li><li><a href="../shokusha/tsusho.html">オーツカ通商</a></li><li><a href="../shokusha/otsuka-koubunshi.html">大塚高分子工業</a></li></ul></li></ul></div></nav>
+<div class="hero">
+  <div class="hero__inner">
+    <div class="hero__breadcrumb"><a href="../index.html">TOP</a><span>›</span><a href="../shokusha/index.html">職種紹介</a><span>›</span>製造</div>
+    <div class="hero__eyebrow"><span class="hero__dept">製造部</span><div class="hero__tags"><span class="tag-fresh">新卒</span><span class="tag-career">経験者</span></div></div>
+    <h1 class="hero__title">製造</h1>
+    <p class="hero__sub">ものづくりの中核を担い、高品質な製品を世に届ける仕事です。</p>
+  </div>
+</div>
+<div class="page">
+  <section style="margin-bottom:56px;">
+    <div class="sec-heading"><div class="sec-heading__bar"></div><div><div class="sec-heading__text">先輩社員の紹介</div><div class="sec-heading__en">Our team members</div></div></div>
+    <div class="staff-grid"><div class="staff-card"><img class="staff-card__photo" src="https://lh3.googleusercontent.com/d/19KNZZLJs3CEn9Iarjir2agOt7mquFy0A" alt="K.K"><div class="staff-card__body"><div class="staff-card__role">製造部リーダー</div><div class="staff-card__name">K.K</div><div class="staff-card__tenure">入社歴〇〇年</div><div class="staff-card__divider"></div><p class="staff-card__comment">クリックしてテキストを編集</p></div></div><div class="staff-card"><img class="staff-card__photo" src="https://lh3.googleusercontent.com/d/1MEZhvgJJ5EOUOMfZILJ3NyvCVpe5JqGT" alt="Y.Y"><div class="staff-card__body"><div class="staff-card__role">製造部リーダー</div><div class="staff-card__name">Y.Y</div><div class="staff-card__tenure">入社歴〇〇年</div><div class="staff-card__divider"></div><p class="staff-card__comment">クリックしてテキストを編集</p></div></div></div>
+  </section>
+  <section style="margin-bottom:56px;">
+    <div class="sec-heading"><div class="sec-heading__bar"></div><div><div class="sec-heading__text">主な業務内容</div><div class="sec-heading__en">Main duties</div></div></div>
+    <div class="work-list"><div class="work-item"><div class="work-item__label"><div class="work-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="work-item__name">ライン監視
+・機械調整</div></div><div class="work-item__body"><p class="work-item__desc">製造ライン上の製品の動きを見ながら、機械の状態や製品品質を監視します。異常や変化があれば条件調整を行い、安定した製造を維持します。</p></div></div><div class="work-item"><div class="work-item__label"><div class="work-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="work-item__name">点検
+条件確認</div></div><div class="work-item__body"><p class="work-item__desc">製造前・稼働中に機械の点検と条件確認を実施します。安全と品質を守るための重要作業です。</p></div></div><div class="work-item"><div class="work-item__label"><div class="work-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="work-item__name">製造
+梱包作業</div></div><div class="work-item__body"><p class="work-item__desc">製造・成形を行い、品質管理をしながら梱包まで担当します。状況に応じて清掃や簡単なメンテナンスも行います。</p></div></div></div>
+    <p class="work-note">※業務内容は生産計画や配属先により変動します</p>
+  </section>
+  <section style="margin-bottom:56px;">
+    <div class="sec-heading"><div class="sec-heading__bar"></div><div><div class="sec-heading__text">一日の流れ（例）</div><div class="sec-heading__en">A day in the life</div></div></div>
+    <div class="shift-columns">
+<div class="shift-col"><div class="shift-col__header shift-col__header--day"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>日勤</div><div class="shift-panel"><div class="timeline"><div class="tl-item"><div class="tl-item__time">08:00</div><div class="tl-item__card"><div class="tl-item__label">出勤・朝礼</div><div class="tl-item__text">当日の生産予定・担当・注意事項を確認</div></div></div><div class="tl-item"><div class="tl-item__time">08:30</div><div class="tl-item__card"><div class="tl-item__label">点検</div><div class="tl-item__text">機械の点検、異常の有無チェック</div></div></div><div class="tl-item"><div class="tl-item__time">09:00</div><div class="tl-item__card"><div class="tl-item__label">条件確認</div><div class="tl-item__text">製造条件の確認、必要に応じて調整</div></div></div><div class="tl-item"><div class="tl-item__time">09:30</div><div class="tl-item__card"><div class="tl-item__label">製造</div><div class="tl-item__text">ライン監視・機械調整、品質確認、梱包作業</div></div></div><div class="tl-item"><div class="tl-item__time">12:00</div><div class="tl-item__card"><div class="tl-item__label">昼休憩</div><div class="tl-item__text">—</div></div></div><div class="tl-item"><div class="tl-item__time">13:00</div><div class="tl-item__card"><div class="tl-item__label">製造（午後）</div><div class="tl-item__text">午前の続き（生産継続）、機械清掃、次製品の準備・段取り</div></div></div><div class="tl-item"><div class="tl-item__time">17:00</div><div class="tl-item__card"><div class="tl-item__label">引継ぎ・退勤</div><div class="tl-item__text">次シフトへ引継ぎ、片付け、退勤</div></div></div></div></div></div>
+<div class="shift-col"><div class="shift-col__header shift-col__header--night"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>夜勤</div><div class="shift-panel"><div class="timeline"><div class="tl-item"><div class="tl-item__time">20:00</div><div class="tl-item__card"><div class="tl-item__label">出勤・夜礼</div><div class="tl-item__text">当日の生産予定・担当・注意事項を確認</div></div></div><div class="tl-item"><div class="tl-item__time">20:30</div><div class="tl-item__card"><div class="tl-item__label">点検</div><div class="tl-item__text">機械の点検、異常の有無チェック</div></div></div><div class="tl-item"><div class="tl-item__time">21:00</div><div class="tl-item__card"><div class="tl-item__label">製造開始</div><div class="tl-item__text">ライン監視・機械調整、品質確認、梱包作業</div></div></div><div class="tl-item"><div class="tl-item__time">00:00</div><div class="tl-item__card"><div class="tl-item__label">深夜休憩</div><div class="tl-item__text">—</div></div></div><div class="tl-item"><div class="tl-item__time">01:00</div><div class="tl-item__card"><div class="tl-item__label">製造（後半）</div><div class="tl-item__text">生産継続、機械清掃、次製品の準備・段取り</div></div></div><div class="tl-item"><div class="tl-item__time">05:00</div><div class="tl-item__card"><div class="tl-item__label">引継ぎ・退勤</div><div class="tl-item__text">日勤シフトへ引継ぎ、片付け、退勤</div></div></div></div></div></div></div>
+  </section>
+</div>
+</body>
+</html>
