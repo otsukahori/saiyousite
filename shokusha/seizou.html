@@ -208,12 +208,105 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
 .shift-col .tl-item__text{font-size:11px}
 .shift-col .tl-note{padding-left:64px}
 
+/* ─── STATS ─── */
+.stats-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  background:var(--white);border-radius:var(--radius);
+  border:1px solid rgba(0,0,0,.06);box-shadow:var(--shadow);
+  overflow:hidden;margin-bottom:72px;
+}
+.stat-item{
+  padding:32px 20px;text-align:center;
+  border-right:1px solid var(--line);
+  animation:fadeUp .5s ease both;
+}
+.stat-item:last-child{border-right:none}
+.stat-item:nth-child(1){animation-delay:.05s}.stat-item:nth-child(2){animation-delay:.12s}
+.stat-item:nth-child(3){animation-delay:.19s}.stat-item:nth-child(4){animation-delay:.26s}
+.stat-item__num{
+  font-family:"DM Sans",sans-serif;font-size:clamp(30px,4vw,46px);
+  font-weight:700;color:var(--g2);line-height:1;margin-bottom:6px;
+}
+.stat-item__num span{font-size:.55em;font-weight:600}
+.stat-item__label{font-size:12px;color:var(--sub);letter-spacing:.04em}
+
+/* ─── APPEAL CARDS ─── */
+.appeal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:12px}
+.appeal-card{
+  background:var(--white);border-radius:18px;padding:28px 22px;
+  border:1px solid rgba(0,0,0,.06);box-shadow:var(--shadow);
+  display:flex;flex-direction:column;gap:14px;
+  transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s;
+  animation:fadeUp .5s ease both;
+  position:relative;overflow:hidden;
+}
+.appeal-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--g1),var(--g3),var(--g4));
+}
+.appeal-card:nth-child(1){animation-delay:.06s}.appeal-card:nth-child(2){animation-delay:.14s}.appeal-card:nth-child(3){animation-delay:.22s}
+.appeal-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.appeal-card__icon{
+  width:48px;height:48px;border-radius:14px;
+  background:linear-gradient(135deg,var(--g1),var(--g2));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(6,61,55,.25);flex-shrink:0;
+}
+.appeal-card__icon svg{width:22px;height:22px}
+.appeal-card__title{font-size:15px;font-weight:800;color:var(--text);letter-spacing:.01em}
+.appeal-card__desc{font-size:13px;line-height:1.8;color:var(--sub)}
+
+/* ─── IDEAL PERSON ─── */
+.checklist{display:flex;flex-direction:column;gap:12px;margin-bottom:12px}
+.check-item{
+  display:flex;align-items:flex-start;gap:14px;
+  background:var(--white);border-radius:14px;padding:18px 22px;
+  border:1px solid rgba(0,0,0,.06);box-shadow:var(--shadow);
+  animation:fadeUp .5s ease both;
+}
+.check-item:nth-child(1){animation-delay:.05s}.check-item:nth-child(2){animation-delay:.11s}
+.check-item:nth-child(3){animation-delay:.17s}.check-item:nth-child(4){animation-delay:.23s}
+.check-item__dot{
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--g2),var(--g3));
+  display:flex;align-items:center;justify-content:center;margin-top:1px;
+}
+.check-item__dot svg{width:14px;height:14px}
+.check-item__text{font-size:14px;font-weight:600;color:var(--text);line-height:1.7}
+
+/* ─── FOOTER CTA ─── */
+.footer-cta{
+  background:linear-gradient(135deg,var(--g1) 0%,#0a5248 100%);
+  padding:72px 32px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.footer-cta::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(42,173,162,.25) 0%,transparent 70%);
+}
+.footer-cta__inner{position:relative;z-index:1;max-width:560px;margin:0 auto}
+.footer-cta__title{font-size:clamp(22px,3vw,32px);font-weight:900;color:var(--white);margin-bottom:12px}
+.footer-cta__sub{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:32px;line-height:1.8}
+.footer-cta__btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--white);color:var(--g1);
+  font-size:14px;font-weight:800;
+  padding:15px 36px;border-radius:999px;text-decoration:none;
+  letter-spacing:.04em;transition:transform .2s,box-shadow .2s;
+  box-shadow:0 8px 32px rgba(0,0,0,.2);
+}
+.footer-cta__btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.28)}
+
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:680px){
   .hero{padding:56px 20px 52px}
   .page{padding:48px 20px 80px}
+  .stats-strip{grid-template-columns:1fr 1fr}
+  .stat-item:nth-child(2){border-right:none}
+  .stat-item:nth-child(3),.stat-item:nth-child(4){border-top:1px solid var(--line)}
+  .appeal-grid{grid-template-columns:1fr}
   .work-item{flex-direction:column}
   .work-item__accent{width:100%;height:4px}
   .work-item__icon-wrap{padding:20px 20px 0}
@@ -222,6 +315,7 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
   .timeline::before{left:52px}
   .tl-item{grid-template-columns:52px 1fr;gap:0 14px}
   .tl-note{padding-left:66px}
+  .footer-cta{padding:56px 20px}
 }
 </style>
 <style>.site-nav{position:sticky;top:0;z-index:1000;background:#063d37;box-shadow:0 2px 16px rgba(0,0,0,.25)}.site-nav__inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;padding:0 24px;height:58px;gap:32px}.site-nav__logo{font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0}.site-nav__list{list-style:none;display:flex;gap:4px;margin:0;padding:0;margin-left:auto}.site-nav__list>li>a{display:block;padding:0 14px;height:58px;line-height:58px;color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:500;transition:background .15s}.site-nav__list>li>a:hover{background:rgba(255,255,255,.1);color:#fff}.has-drop{position:relative}.drop{display:none;position:absolute;top:58px;left:0;background:#fff;list-style:none;margin:0;padding:8px 0;min-width:220px;border-radius:0 0 14px 14px;box-shadow:0 12px 40px rgba(0,0,0,.15)}.has-drop:hover .drop{display:block}.drop li a{display:block;padding:10px 20px;font-size:13px;color:#0d2624;text-decoration:none}.drop li a:hover{background:#f0faf9;color:#096059}.site-nav__toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}.site-nav__toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}@media(max-width:680px){.site-nav__toggle{display:flex}.site-nav__list{display:none;flex-direction:column;position:absolute;top:58px;left:0;right:0;background:#063d37;padding:12px 0;z-index:999}.site-nav.open .site-nav__list{display:flex}.has-drop:hover .drop{display:none}.drop{display:block!important;position:static;box-shadow:none;background:rgba(0,0,0,.15);border-radius:0}.drop li a{color:rgba(255,255,255,.8);padding:8px 32px}.site-nav__list>li>a{height:auto;line-height:1;padding:12px 24px}}</style>
@@ -246,6 +340,26 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
 </div>
 
 <div class="page">
+
+  <!-- 数字で見る -->
+  <div class="stats-strip">
+    <div class="stat-item">
+      <div class="stat-item__num">〇〇<span>名</span></div>
+      <div class="stat-item__label">製造部 在籍人数</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item__num">〇〇<span>%</span></div>
+      <div class="stat-item__label">未経験入社</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item__num">〇〇<span>歳</span></div>
+      <div class="stat-item__label">平均年齢</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item__num">〇〇<span>%</span></div>
+      <div class="stat-item__label">有給取得率</div>
+    </div>
+  </div>
 
   <!-- 先輩社員 -->
   <section style="margin-bottom:72px">
@@ -273,6 +387,37 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
           <div class="staff-card__divider"></div>
           <p class="staff-card__comment">「おーい、ちょっといい？」ってお互い声をかけ合える職場なんですよ！ものをつくることが好きな人には、本当に向いてる仕事だと思いますね。</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- この仕事の魅力 -->
+  <section style="margin-bottom:72px">
+    <div class="sec-heading">
+      <span class="sec-heading__en">Why this job</span>
+      <div class="sec-heading__text">この仕事の魅力</div>
+    </div>
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <div class="appeal-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="appeal-card__title">確かなスキルが身につく</div>
+        <p class="appeal-card__desc">機械操作・品質管理・段取りなど、ものづくりの現場で役立つ技術が一から習得できます。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="appeal-card__title">チームで支え合う職場</div>
+        <p class="appeal-card__desc">困ったときにすぐ声をかけ合える雰囲気。先輩が丁寧にサポートするので未経験でも安心です。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <div class="appeal-card__title">形になる達成感</div>
+        <p class="appeal-card__desc">自分が関わった製品が世に出ていく。手で触れるものを作る仕事ならではの充実感があります。</p>
       </div>
     </div>
   </section>
@@ -324,6 +469,32 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
     <p class="work-note">※業務内容は生産計画や配属先により変動します</p>
   </section>
 
+  <!-- 求める人物像 -->
+  <section style="margin-bottom:72px">
+    <div class="sec-heading">
+      <span class="sec-heading__en">Who we're looking for</span>
+      <div class="sec-heading__text">求める人物像</div>
+    </div>
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-item__dot"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="check-item__text">ものづくりに興味があり、手を動かして仕事をすることが好きな方</div>
+      </div>
+      <div class="check-item">
+        <div class="check-item__dot"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="check-item__text">チームの一員として協力しながら働ける方</div>
+      </div>
+      <div class="check-item">
+        <div class="check-item__dot"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="check-item__text">細かい変化に気づき、丁寧に仕事に取り組める方</div>
+      </div>
+      <div class="check-item">
+        <div class="check-item__dot"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="check-item__text">未経験・第二新卒歓迎。意欲があれば経験は問いません</div>
+      </div>
+    </div>
+  </section>
+
   <!-- 一日の流れ -->
   <section style="margin-bottom:56px">
     <div class="sec-heading">
@@ -370,5 +541,19 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
   </section>
 
 </div>
+</div>
+
+<!-- FOOTER CTA -->
+<div class="footer-cta">
+  <div class="footer-cta__inner">
+    <h2 class="footer-cta__title">一緒に働きませんか？</h2>
+    <p class="footer-cta__sub">製造部では新卒・経験者ともに積極採用中です。<br>まずは職種一覧から、あなたに合った仕事を探してみてください。</p>
+    <a class="footer-cta__btn" href="../shokusha/index.html">
+      職種一覧に戻る
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</div>
+
 </body>
 </html>
