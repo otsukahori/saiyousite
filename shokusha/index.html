@@ -5,71 +5,418 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>職種紹介 - 株式会社オーツカ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --g1: #096059; --g2: #0E857B; --g3: #2aada2; --g-pale: #f0faf9; --g-light: #c8ebe9; --text: #0d2624; --text-sub: #4a7a77; --white: #ffffff; --radius: 20px; --shadow: 0 2px 20px rgba(14,133,123,.08); --shadow-hover: 0 12px 40px rgba(14,133,123,.18); }
-  body { font-family: 'Noto Sans JP', sans-serif; background: #f5fafa; color: var(--text); }
-  .page-header { background: var(--g1); padding: 80px 24px 64px; text-align: center; position: relative; overflow: hidden; }
-  .page-header__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; z-index: 0; }
-  .page-header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 60% 110%, rgba(42,173,162,.35) 0%, transparent 70%); z-index: 1; }
-  .page-header__eyebrow { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--g3); margin-bottom: 16px; position: relative; z-index: 2; }
-  .page-header__title { font-size: clamp(32px, 5vw, 52px); font-weight: 900; color: var(--white); letter-spacing: -.01em; line-height: 1.1; position: relative; z-index: 2; }
-  .page-header__sub { margin-top: 14px; font-size: 15px; color: rgba(255,255,255,.6); position: relative; z-index: 2; }
-  .breadcrumb { padding: 14px 40px; font-size: 12px; color: var(--text-sub); border-bottom: 1px solid #e4ede9; background: var(--white); }
+  :root {
+    --g1: #063d37;
+    --g2: #0E857B;
+    --g3: #2aada2;
+    --g4: #3dcfc3;
+    --g-pale: #f0faf9;
+    --g-light: #c8ebe9;
+    --text: #0d2624;
+    --text-sub: #4a7a77;
+    --white: #ffffff;
+    --radius: 18px;
+    --shadow: 0 4px 24px rgba(6,61,55,.10);
+    --shadow-hover: 0 16px 48px rgba(6,61,55,.22);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f4f9f8; color: var(--text); }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 120px 24px 80px;
+  }
+  .hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(6,61,55,.82) 0%, rgba(6,61,55,.55) 60%, rgba(14,133,123,.4) 100%);
+    z-index: 1;
+  }
+  .hero__content { position: relative; z-index: 2; max-width: 780px; }
+  .hero__label {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--g4);
+    border: 1px solid rgba(61,207,195,.5);
+    padding: 5px 16px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  .hero__title {
+    font-size: clamp(36px, 6vw, 68px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    margin-bottom: 20px;
+  }
+  .hero__title em {
+    font-style: normal;
+    background: linear-gradient(90deg, #3dcfc3, #a0f0ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero__sub {
+    font-size: clamp(14px, 2vw, 17px);
+    color: rgba(255,255,255,.72);
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+  .hero__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--g3);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    letter-spacing: .04em;
+    transition: background .2s, transform .2s;
+    box-shadow: 0 8px 24px rgba(42,173,162,.4);
+  }
+  .hero__cta:hover { background: var(--g4); transform: translateY(-2px); }
+  .hero__cta svg { width: 18px; height: 18px; }
+  .hero__scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,.45);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+  .hero__scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,.4), transparent);
+    animation: scrollLine 1.6s ease-in-out infinite;
+  }
+  @keyframes scrollLine { 0%,100%{opacity:.4;transform:scaleY(.6) translateY(-4px)} 50%{opacity:1;transform:scaleY(1) translateY(0)} }
+
+  /* ─── STATS BAR ─── */
+  .stats-bar {
+    background: var(--white);
+    border-bottom: 1px solid #daeeed;
+    padding: 0 40px;
+  }
+  .stats-bar__inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+  .stat {
+    flex: 1;
+    padding: 28px 20px;
+    text-align: center;
+    border-right: 1px solid #daeeed;
+  }
+  .stat:last-child { border-right: none; }
+  .stat__num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: var(--g2);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat__label { font-size: 11px; color: var(--text-sub); letter-spacing: .06em; }
+
+  /* ─── BREADCRUMB ─── */
+  .breadcrumb { padding: 12px 40px; font-size: 12px; color: var(--text-sub); background: var(--g-pale); border-bottom: 1px solid #c8ebe9; }
   .breadcrumb a { color: var(--g2); text-decoration: none; }
   .breadcrumb span { margin: 0 6px; }
-  .job-wrap { max-width: 1100px; margin: 0 auto; padding: 72px 32px 100px; }
-  .dept { margin-bottom: 72px; }
-  .dept__header { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; padding-bottom: 18px; border-bottom: 1px solid #c0e0de; }
-  .dept__icon { width: 44px; height: 44px; border-radius: 12px; background: var(--g1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+  /* ─── CONTENT ─── */
+  .job-wrap { max-width: 1100px; margin: 0 auto; padding: 72px 32px 120px; }
+
+  /* ─── DEPT SECTION ─── */
+  .dept { margin-bottom: 80px; }
+  .dept__header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding: 20px 28px;
+    background: var(--white);
+    border-radius: 16px;
+    border: 1.5px solid #daeeed;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .dept__header::before {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(42,173,162,.07) 0%, transparent 70%);
+  }
+  .dept__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--g1), var(--g2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(6,61,55,.25);
+  }
   .dept__icon svg { width: 22px; height: 22px; }
-  .dept__name { font-size: 20px; font-weight: 800; color: var(--text); letter-spacing: .02em; }
-  .dept__count { margin-left: auto; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; color: var(--text-sub); letter-spacing: .06em; }
+  .dept__name { font-size: 19px; font-weight: 800; color: var(--text); letter-spacing: .02em; }
+  .dept__count {
+    margin-left: auto;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--g2);
+    background: var(--g-pale);
+    border: 1px solid var(--g-light);
+    padding: 4px 12px;
+    border-radius: 999px;
+    letter-spacing: .06em;
+  }
+
+  /* ─── CARD GRID ─── */
   .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-  .card-grid--2col { grid-template-columns: repeat(2, 1fr); max-width: 680px; }
+  .card-grid--2col { grid-template-columns: repeat(2, 1fr); max-width: 700px; }
   @media (max-width: 759px) { .card-grid--2col { grid-template-columns: 1fr; } }
-  .job-card { display: flex; flex-direction: column; background: var(--white); border-radius: var(--radius); border: 1.5px solid #daeeed; text-decoration: none; overflow: hidden; transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; box-shadow: var(--shadow); animation: fadeUp .4s ease both; }
-  .job-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--g3); }
-  .job-card__top { background: var(--g-pale); padding: 28px 28px 22px; display: flex; align-items: flex-start; gap: 18px; border-bottom: 1px solid #daeeed; position: relative; overflow: hidden; }
-  .job-card__top::after { content: ''; position: absolute; right: -20px; bottom: -20px; width: 90px; height: 90px; border-radius: 50%; background: var(--g-light); opacity: .5; }
-  .job-card__badge { width: 52px; height: 52px; border-radius: 14px; background: var(--g2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 1; }
-  .job-card__badge svg { width: 26px; height: 26px; }
+
+  /* ─── JOB CARD ─── */
+  .job-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1.5px solid #daeeed;
+    text-decoration: none;
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    box-shadow: var(--shadow);
+    animation: fadeUp .5s ease both;
+  }
+  .job-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: var(--g3); }
+  .job-card__top {
+    background: linear-gradient(135deg, var(--g1) 0%, #0e6e65 100%);
+    padding: 24px 24px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .job-card__top::after {
+    content: '';
+    position: absolute;
+    right: -24px;
+    bottom: -24px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.06);
+  }
+  .job-card__top::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: -16px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.04);
+  }
+  .job-card__badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .job-card__badge svg { width: 22px; height: 22px; }
   .job-card__meta { position: relative; z-index: 1; }
-  .job-card__dept-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--g2); background: var(--g-light); padding: 3px 9px; border-radius: 999px; margin-bottom: 7px; }
-  .job-card__title { font-size: 19px; font-weight: 800; color: var(--text); line-height: 1.3; }
-  .job-card__body { padding: 20px 28px 22px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
-  .job-card__desc { font-size: 13px; line-height: 1.75; color: var(--text-sub); flex: 1; white-space: pre-line; }
+  .job-card__dept-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: rgba(255,255,255,.7);
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.18);
+    padding: 2px 9px;
+    border-radius: 999px;
+    margin-bottom: 7px;
+  }
+  .job-card__title { font-size: 20px; font-weight: 800; color: var(--white); line-height: 1.3; }
+  .job-card__body { padding: 20px 24px 22px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+  .job-card__desc { font-size: 13px; line-height: 1.8; color: var(--text-sub); flex: 1; }
   .recruit-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-  .recruit-tag { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; letter-spacing: .04em; padding: 4px 10px; border-radius: 999px; line-height: 1; }
-  .recruit-tag--fresh { color: #1a1a1a; background: #FFD600; border: 1px solid #E6BE00; }
-  .recruit-tag--career { color: #1a1a1a; background: #e07b00; border: 1px solid #c06800; }
-  .job-card__footer { display: flex; align-items: center; justify-content: space-between; }
+  .recruit-tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    padding: 4px 11px;
+    border-radius: 999px;
+    line-height: 1;
+  }
+  .recruit-tag--fresh { color: #5a3e00; background: #ffe566; border: 1px solid #e6c800; }
+  .recruit-tag--career { color: #fff; background: #e07b00; border: 1px solid #c06800; }
+  .job-card__footer { display: flex; align-items: center; justify-content: space-between; padding-top: 4px; border-top: 1px solid #eaf4f3; }
   .job-card__link-text { font-size: 13px; font-weight: 700; color: var(--g2); letter-spacing: .02em; }
-  .job-card__arrow { width: 34px; height: 34px; border-radius: 50%; background: var(--g2); display: flex; align-items: center; justify-content: center; transition: background .2s, transform .2s; }
-  .job-card:hover .job-card__arrow { background: var(--g1); transform: translateX(3px); }
+  .job-card__arrow {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--g2), var(--g3));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 12px rgba(14,133,123,.3);
+  }
+  .job-card:hover .job-card__arrow { transform: translateX(3px); box-shadow: 0 6px 18px rgba(14,133,123,.4); }
   .job-card__arrow svg { width: 16px; height: 16px; }
-  @media (min-width: 760px) { .job-card.half { max-width: 480px; } }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   .card-grid .job-card:nth-child(1) { animation-delay: .05s; }
-  .card-grid .job-card:nth-child(2) { animation-delay: .12s; }
-  .card-grid .job-card:nth-child(3) { animation-delay: .19s; }
-  @media (max-width: 759px) { .page-header { padding: 56px 20px 48px; } .job-wrap { padding: 48px 20px 80px; } .card-grid { grid-template-columns: 1fr; gap: 16px; } .dept { margin-bottom: 56px; } }
+  .card-grid .job-card:nth-child(2) { animation-delay: .13s; }
+  .card-grid .job-card:nth-child(3) { animation-delay: .21s; }
+  .card-grid .job-card:nth-child(4) { animation-delay: .29s; }
+
+  /* ─── FOOTER CTA ─── */
+  .footer-cta {
+    background: linear-gradient(135deg, var(--g1) 0%, #0a5248 100%);
+    padding: 72px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .footer-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(42,173,162,.25) 0%, transparent 70%);
+  }
+  .footer-cta__inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+  .footer-cta__title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; color: var(--white); margin-bottom: 12px; }
+  .footer-cta__sub { font-size: 14px; color: rgba(255,255,255,.65); margin-bottom: 32px; line-height: 1.8; }
+  .footer-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+    color: var(--g1);
+    font-size: 14px;
+    font-weight: 800;
+    padding: 15px 36px;
+    border-radius: 999px;
+    text-decoration: none;
+    letter-spacing: .04em;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 8px 32px rgba(0,0,0,.2);
+  }
+  .footer-cta__btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.28); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 759px) {
+    .hero { min-height: 70vh; padding: 100px 20px 70px; }
+    .stats-bar { padding: 0 16px; }
+    .stat__num { font-size: 26px; }
+    .job-wrap { padding: 48px 20px 80px; }
+    .dept { margin-bottom: 56px; }
+    .breadcrumb { padding: 12px 20px; }
+  }
+  @media (max-width: 500px) {
+    .stats-bar__inner { flex-wrap: wrap; }
+    .stat { flex: 1 1 50%; border-right: none; border-bottom: 1px solid #daeeed; }
+  }
 </style>
-<style>.site-nav{position:sticky;top:0;z-index:1000;background:#096059;box-shadow:0 2px 12px rgba(0,0,0,.18)}.site-nav__inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;padding:0 24px;height:56px;gap:32px}.site-nav__logo{font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0}.site-nav__list{list-style:none;display:flex;gap:4px;margin:0;padding:0;margin-left:auto}.site-nav__list>li>a{display:block;padding:0 14px;height:56px;line-height:56px;color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:500;transition:background .15s}.site-nav__list>li>a:hover{background:rgba(255,255,255,.12);color:#fff}.has-drop{position:relative}.drop{display:none;position:absolute;top:56px;left:0;background:#fff;list-style:none;margin:0;padding:8px 0;min-width:210px;border-radius:0 0 12px 12px;box-shadow:0 8px 32px rgba(0,0,0,.14)}.has-drop:hover .drop{display:block}.drop li a{display:block;padding:10px 20px;font-size:13px;color:#0d2624;text-decoration:none}.drop li a:hover{background:#f0faf9;color:#096059}.site-nav__toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}.site-nav__toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}@media(max-width:680px){.site-nav__toggle{display:flex}.site-nav__list{display:none;flex-direction:column;position:absolute;top:56px;left:0;right:0;background:#096059;padding:12px 0;z-index:999}.site-nav.open .site-nav__list{display:flex}.has-drop:hover .drop{display:none}.drop{display:block!important;position:static;box-shadow:none;background:rgba(0,0,0,.15);border-radius:0}.drop li a{color:rgba(255,255,255,.8);padding:8px 32px}.site-nav__list>li>a{height:auto;line-height:1;padding:12px 24px}}</style>
+<style>.site-nav{position:sticky;top:0;z-index:1000;background:#063d37;box-shadow:0 2px 16px rgba(0,0,0,.25)}.site-nav__inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;padding:0 24px;height:58px;gap:32px}.site-nav__logo{font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0}.site-nav__list{list-style:none;display:flex;gap:4px;margin:0;padding:0;margin-left:auto}.site-nav__list>li>a{display:block;padding:0 14px;height:58px;line-height:58px;color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:500;transition:background .15s}.site-nav__list>li>a:hover{background:rgba(255,255,255,.1);color:#fff}.has-drop{position:relative}.drop{display:none;position:absolute;top:58px;left:0;background:#fff;list-style:none;margin:0;padding:8px 0;min-width:220px;border-radius:0 0 14px 14px;box-shadow:0 12px 40px rgba(0,0,0,.15)}.has-drop:hover .drop{display:block}.drop li a{display:block;padding:10px 20px;font-size:13px;color:#0d2624;text-decoration:none}.drop li a:hover{background:#f0faf9;color:#096059}.site-nav__toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}.site-nav__toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}@media(max-width:680px){.site-nav__toggle{display:flex}.site-nav__list{display:none;flex-direction:column;position:absolute;top:58px;left:0;right:0;background:#063d37;padding:12px 0;z-index:999}.site-nav.open .site-nav__list{display:flex}.has-drop:hover .drop{display:none}.drop{display:block!important;position:static;box-shadow:none;background:rgba(0,0,0,.15);border-radius:0}.drop li a{color:rgba(255,255,255,.8);padding:8px 32px}.site-nav__list>li>a{height:auto;line-height:1;padding:12px 24px}}</style>
 </head>
 <body>
 <nav class="site-nav"><div class="site-nav__inner"><a class="site-nav__logo" href="../index.html">株式会社オーツカ 採用サイト</a><button class="site-nav__toggle" aria-label="メニュー" onclick="this.closest('.site-nav').classList.toggle('open')"><span></span><span></span><span></span></button><ul class="site-nav__list"><li><a href="../index.html">ホーム</a></li><li class="has-drop"><a href="../shokusha/index.html">職種紹介</a><ul class="drop"><li><a href="../shokusha/seizou.html">製造</a></li><li><a href="../shokusha/kensa.html">検査</a></li><li><a href="../shokusha/hozen.html">保全</a></li><li><a href="../shokusha/eigyo.html">営業</a></li><li><a href="../shokusha/eigyo-jimu.html">営業事務</a></li><li><a href="../shokusha/seisan-gijutsu.html">生産技術</a></li><li><a href="../shokusha/kaihatsu-gijutsu.html">開発技術</a></li><li><a href="../shokusha/qa-customer.html">品質保証（顧客対応）</a></li><li><a href="../shokusha/qa-kensa.html">品質保証（検査）</a></li><li><a href="../shokusha/chotatsu.html">調達</a></li><li><a href="../shokusha/tsusho.html">オーツカ通商</a></li><li><a href="../shokusha/otsuka-koubunshi.html">大塚高分子工業</a></li></ul></li></ul></div></nav>
-<div class="page-header">
-  <video class="page-header__video" autoplay muted loop playsinline src="../videos/drone.mp4"></video>
-  <div class="page-header__eyebrow">CAREERS</div>
-  <h1 class="page-header__title">職種紹介</h1>
-  <p class="page-header__sub">あなたの力を活かせる仕事が、ここにあります。</p>
+
+<!-- HERO -->
+<section class="hero">
+  <video class="hero__video" autoplay muted loop playsinline src="../videos/drone.mp4"></video>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <span class="hero__label">Careers at Otsuka</span>
+    <h1 class="hero__title">あなたの力で、<br><em>未来をつくろう。</em></h1>
+    <p class="hero__sub">株式会社オーツカでは、ともに成長できる仲間を募集しています。<br>多様な職種で、あなたの可能性を活かしてください。</p>
+    <a class="hero__cta" href="#jobs">
+      募集職種を見る
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </div>
+  <div class="hero__scroll">
+    <div class="hero__scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-bar__inner">
+    <div class="stat"><div class="stat__num">12<span style="font-size:.55em">+</span></div><div class="stat__label">募集職種</div></div>
+    <div class="stat"><div class="stat__num">7</div><div class="stat__label">部署</div></div>
+    <div class="stat"><div class="stat__num">新卒<span style="font-size:.55em"> / </span>経験者</div><div class="stat__label">両方募集中</div></div>
+  </div>
 </div>
+
 <nav class="breadcrumb">
   <a href="../index.html">TOP</a><span>›</span>職種紹介
 </nav>
-<div class="job-wrap">
+
+<div class="job-wrap" id="jobs">
+
   <section class="dept">
     <div class="dept__header">
       <div class="dept__icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20V9l6-4v4l6-4v4l6-4v15"/><path d="M2 20h20"/><rect x="9" y="14" width="6" height="6"/></svg></div>
@@ -94,6 +441,7 @@
       </a>
     </div>
   </section>
+
   <section class="dept">
     <div class="dept__header">
       <div class="dept__icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
@@ -110,10 +458,11 @@
       </a>
     </div>
   </section>
+
   <section class="dept">
     <div class="dept__header">
       <div class="dept__icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div>
-      <div class="dept__name">技術部</div><div class="dept__count">1 JOBS</div>
+      <div class="dept__name">技術部</div><div class="dept__count">1 JOB</div>
     </div>
     <div class="card-grid">
       <a class="job-card" href="../shokusha/kaihatsu-gijutsu.html">
@@ -122,6 +471,7 @@
       </a>
     </div>
   </section>
+
   <section class="dept">
     <div class="dept__header">
       <div class="dept__icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
@@ -138,6 +488,7 @@
       </a>
     </div>
   </section>
+
   <section class="dept">
     <div class="dept__header">
       <div class="dept__icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 20h10"/><path d="M9 18v2"/><path d="M15 18v2"/></svg></div>
@@ -150,6 +501,7 @@
       </a>
     </div>
   </section>
+
   <section class="dept">
     <div class="dept__header">
       <div class="dept__icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.73z"/></svg></div>
@@ -162,6 +514,7 @@
       </a>
     </div>
   </section>
+
   <section class="dept">
     <div class="dept__header">
       <div class="dept__icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7l3-7z"/></svg></div>
@@ -174,6 +527,20 @@
       </a>
     </div>
   </section>
+
 </div>
+
+<!-- FOOTER CTA -->
+<div class="footer-cta">
+  <div class="footer-cta__inner">
+    <h2 class="footer-cta__title">一緒に働きませんか？</h2>
+    <p class="footer-cta__sub">各職種の詳細情報・応募方法は各ページからご確認ください。<br>不明な点はお気軽にお問い合わせください。</p>
+    <a class="footer-cta__btn" href="../index.html">
+      トップページへ戻る
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</div>
+
 </body>
 </html>
