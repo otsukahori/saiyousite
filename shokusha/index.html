@@ -218,7 +218,7 @@
   }
 
   /* ─── CARD GRID ─── */
-  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
   .card-grid--2col { grid-template-columns: repeat(2, 1fr); max-width: 700px; }
   @media (max-width: 759px) { .card-grid--2col { grid-template-columns: 1fr; } }
 
@@ -227,102 +227,147 @@
     display: flex;
     flex-direction: column;
     background: var(--white);
-    border-radius: var(--radius);
-    border: 1.5px solid #daeeed;
+    border-radius: 20px;
+    border: 1px solid rgba(0,0,0,.06);
     text-decoration: none;
     overflow: hidden;
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    box-shadow: var(--shadow);
+    transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s cubic-bezier(.22,1,.36,1);
+    box-shadow: 0 2px 12px rgba(6,61,55,.06), 0 1px 3px rgba(0,0,0,.04);
     animation: fadeUp .5s ease both;
+    position: relative;
   }
-  .job-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: var(--g3); }
+  .job-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--g1), var(--g3), var(--g4));
+    z-index: 1;
+  }
+  .job-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 24px 60px rgba(6,61,55,.16), 0 8px 20px rgba(6,61,55,.08);
+  }
+
+  /* TOP AREA */
   .job-card__top {
-    background: linear-gradient(135deg, var(--g1) 0%, #0e6e65 100%);
-    padding: 24px 24px 20px;
+    padding: 28px 26px 20px;
     display: flex;
     align-items: flex-start;
     gap: 16px;
+    background: var(--white);
     position: relative;
     overflow: hidden;
   }
   .job-card__top::after {
     content: '';
     position: absolute;
-    right: -24px;
-    bottom: -24px;
-    width: 100px;
-    height: 100px;
+    right: -30px;
+    top: -30px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background: rgba(255,255,255,.06);
-  }
-  .job-card__top::before {
-    content: '';
-    position: absolute;
-    left: -16px;
-    top: -16px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.04);
+    background: radial-gradient(circle, rgba(42,173,162,.08) 0%, transparent 70%);
   }
   .job-card__badge {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: rgba(255,255,255,.15);
-    border: 1px solid rgba(255,255,255,.2);
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--g1) 0%, var(--g2) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    box-shadow: 0 6px 16px rgba(6,61,55,.28);
     position: relative;
     z-index: 1;
   }
   .job-card__badge svg { width: 22px; height: 22px; }
-  .job-card__meta { position: relative; z-index: 1; }
+  .job-card__meta { position: relative; z-index: 1; flex: 1; }
   .job-card__dept-tag {
     display: inline-block;
+    font-family: 'DM Sans', sans-serif;
     font-size: 10px;
     font-weight: 700;
-    letter-spacing: .1em;
-    color: rgba(255,255,255,.7);
-    background: rgba(255,255,255,.12);
-    border: 1px solid rgba(255,255,255,.18);
-    padding: 2px 9px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--g2);
+    background: var(--g-pale);
+    border: 1px solid var(--g-light);
+    padding: 3px 10px;
     border-radius: 999px;
-    margin-bottom: 7px;
+    margin-bottom: 8px;
   }
-  .job-card__title { font-size: 20px; font-weight: 800; color: var(--white); line-height: 1.3; }
-  .job-card__body { padding: 20px 24px 22px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
-  .job-card__desc { font-size: 13px; line-height: 1.8; color: var(--text-sub); flex: 1; }
+  .job-card__title {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1.2;
+    letter-spacing: -.01em;
+  }
+
+  /* BODY */
+  .job-card__body {
+    padding: 0 26px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .job-card__desc {
+    font-size: 13px;
+    line-height: 1.85;
+    color: #6b9490;
+    flex: 1;
+  }
   .recruit-tags { display: flex; gap: 6px; flex-wrap: wrap; }
   .recruit-tag {
     display: inline-flex;
     align-items: center;
     font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .06em;
-    padding: 4px 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    padding: 4px 12px;
     border-radius: 999px;
     line-height: 1;
   }
-  .recruit-tag--fresh { color: #5a3e00; background: #ffe566; border: 1px solid #e6c800; }
-  .recruit-tag--career { color: #fff; background: #e07b00; border: 1px solid #c06800; }
-  .job-card__footer { display: flex; align-items: center; justify-content: space-between; padding-top: 4px; border-top: 1px solid #eaf4f3; }
-  .job-card__link-text { font-size: 13px; font-weight: 700; color: var(--g2); letter-spacing: .02em; }
+  .recruit-tag--fresh { color: #4a2e00; background: #ffd60a; }
+  .recruit-tag--career { color: #fff; background: linear-gradient(90deg, #e07b00, #f5a623); }
+
+  /* FOOTER */
+  .job-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid #f0f7f6;
+  }
+  .job-card__link-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--g2);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-family: 'DM Sans', sans-serif;
+  }
   .job-card__arrow {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--g2), var(--g3));
+    background: var(--g-pale);
+    border: 1.5px solid var(--g-light);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform .2s, box-shadow .2s;
-    box-shadow: 0 4px 12px rgba(14,133,123,.3);
+    transition: all .22s ease;
   }
-  .job-card:hover .job-card__arrow { transform: translateX(3px); box-shadow: 0 6px 18px rgba(14,133,123,.4); }
-  .job-card__arrow svg { width: 16px; height: 16px; }
+  .job-card__arrow svg { width: 15px; height: 15px; stroke: var(--g2); }
+  .job-card:hover .job-card__arrow {
+    background: var(--g2);
+    border-color: var(--g2);
+    transform: translateX(2px);
+  }
+  .job-card:hover .job-card__arrow svg { stroke: white; }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   .card-grid .job-card:nth-child(1) { animation-delay: .05s; }
@@ -425,19 +470,19 @@
     <div class="card-grid card-grid--2col">
       <a class="job-card" href="../shokusha/seizou.html">
         <div class="job-card__top"><div class="job-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div><div class="job-card__meta"><div class="job-card__dept-tag">製造部</div><div class="job-card__title">製造</div></div></div>
-        <div class="job-card__body"><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">製品の組立・加工・材料投入など製造ラインの中核を担います。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
+        <div class="job-card__body"><div style="height:1px"></div><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">製品の組立・加工・材料投入など製造ラインの中核を担います。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
       </a>
       <a class="job-card" href="../shokusha/kensa.html">
         <div class="job-card__top"><div class="job-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="job-card__meta"><div class="job-card__dept-tag">製造部</div><div class="job-card__title">検査</div></div></div>
-        <div class="job-card__body"><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">完成品の寸法・外観・機能を精密にチェック。品質の最終ラインを守ります。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
+        <div class="job-card__body"><div style="height:1px"></div><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">完成品の寸法・外観・機能を精密にチェック。品質の最終ラインを守ります。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
       </a>
       <a class="job-card" href="../shokusha/hozen.html">
         <div class="job-card__top"><div class="job-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div class="job-card__meta"><div class="job-card__dept-tag">製造部</div><div class="job-card__title">保全</div></div></div>
-        <div class="job-card__body"><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">製造設備の点検・修理・改善を担い、安定した生産ラインを維持します。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
+        <div class="job-card__body"><div style="height:1px"></div><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">製造設備の点検・修理・改善を担い、安定した生産ラインを維持します。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
       </a>
       <a class="job-card" href="../shokusha/seisan-gijutsu.html">
         <div class="job-card__top"><div class="job-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="job-card__meta"><div class="job-card__dept-tag">製造部</div><div class="job-card__title">生産技術</div></div></div>
-        <div class="job-card__body"><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span></div><p class="job-card__desc">生産プロセスの設計・改善・自動化推進を担います。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
+        <div class="job-card__body"><div style="height:1px"></div><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span></div><p class="job-card__desc">生産プロセスの設計・改善・自動化推進を担います。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
       </a>
     </div>
   </section>
@@ -450,11 +495,11 @@
     <div class="card-grid">
       <a class="job-card" href="../shokusha/eigyo.html">
         <div class="job-card__top"><div class="job-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="job-card__meta"><div class="job-card__dept-tag">営業部</div><div class="job-card__title">営業</div></div></div>
-        <div class="job-card__body"><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span></div><p class="job-card__desc">既存顧客への提案・新規開拓を通じて、オーツカの製品価値をお客様に届けます。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
+        <div class="job-card__body"><div style="height:1px"></div><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span></div><p class="job-card__desc">既存顧客への提案・新規開拓を通じて、オーツカの製品価値をお客様に届けます。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
       </a>
       <a class="job-card" href="../shokusha/eigyo-jimu.html">
         <div class="job-card__top"><div class="job-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="job-card__meta"><div class="job-card__dept-tag">営業部</div><div class="job-card__title">営業事務</div></div></div>
-        <div class="job-card__body"><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span></div><p class="job-card__desc">受発注管理・見積作成・顧客対応など、営業活動を縁の下から支えます。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
+        <div class="job-card__body"><div style="height:1px"></div><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span></div><p class="job-card__desc">受発注管理・見積作成・顧客対応など、営業活動を縁の下から支えます。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
       </a>
     </div>
   </section>
@@ -467,7 +512,7 @@
     <div class="card-grid">
       <a class="job-card" href="../shokusha/kaihatsu-gijutsu.html">
         <div class="job-card__top"><div class="job-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="job-card__meta"><div class="job-card__dept-tag">技術部</div><div class="job-card__title">開発技術</div></div></div>
-        <div class="job-card__body"><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span></div><p class="job-card__desc">新製品・新工法の研究開発でイノベーションを通じて会社の未来を切り開きます。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
+        <div class="job-card__body"><div style="height:1px"></div><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span></div><p class="job-card__desc">新製品・新工法の研究開発でイノベーションを通じて会社の未来を切り開きます。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
       </a>
     </div>
   </section>
@@ -480,11 +525,11 @@
     <div class="card-grid">
       <a class="job-card" href="../shokusha/qa-customer.html">
         <div class="job-card__top"><div class="job-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="job-card__meta"><div class="job-card__dept-tag">品質保証部</div><div class="job-card__title">品質保証（顧客対応）</div></div></div>
-        <div class="job-card__body"><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">クレーム対応・品質改善提案・顧客折衝など、対外的な品質窓口として活躍します。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
+        <div class="job-card__body"><div style="height:1px"></div><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">クレーム対応・品質改善提案・顧客折衝など、対外的な品質窓口として活躍します。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
       </a>
       <a class="job-card" href="../shokusha/qa-kensa.html">
         <div class="job-card__top"><div class="job-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="job-card__meta"><div class="job-card__dept-tag">品質保証部</div><div class="job-card__title">品質保証（検査）</div></div></div>
-        <div class="job-card__body"><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">出荷前の最終検査・規格適合確認を担当。製品への深い理解と細部への集中力が求められます。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
+        <div class="job-card__body"><div style="height:1px"></div><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">出荷前の最終検査・規格適合確認を担当。製品への深い理解と細部への集中力が求められます。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
       </a>
     </div>
   </section>
@@ -497,7 +542,7 @@
     <div class="card-grid">
       <a class="job-card" href="../shokusha/chotatsu.html">
         <div class="job-card__top"><div class="job-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/></svg></div><div class="job-card__meta"><div class="job-card__dept-tag">調達部</div><div class="job-card__title">調達</div></div></div>
-        <div class="job-card__body"><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">原材料の調達から購入計画・納期管理・品質管理まで一貫して行います。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
+        <div class="job-card__body"><div style="height:1px"></div><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">原材料の調達から購入計画・納期管理・品質管理まで一貫して行います。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
       </a>
     </div>
   </section>
@@ -510,7 +555,7 @@
     <div class="card-grid">
       <a class="job-card" href="../shokusha/tsusho.html">
         <div class="job-card__top"><div class="job-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.73z"/></svg></div><div class="job-card__meta"><div class="job-card__dept-tag">オーツカ通商</div><div class="job-card__title">通商</div></div></div>
-        <div class="job-card__body"><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">顧客訪問や見積作成・価格交渉から輸出入を含む仕入れ販売まで幅広く担当します。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
+        <div class="job-card__body"><div style="height:1px"></div><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">顧客訪問や見積作成・価格交渉から輸出入を含む仕入れ販売まで幅広く担当します。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
       </a>
     </div>
   </section>
@@ -523,7 +568,7 @@
     <div class="card-grid">
       <a class="job-card" href="../shokusha/otsuka-koubunshi.html">
         <div class="job-card__top"><div class="job-card__badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7l3-7z"/></svg></div><div class="job-card__meta"><div class="job-card__dept-tag">大塚高分子工業</div><div class="job-card__title">大塚高分子工業</div></div></div>
-        <div class="job-card__body"><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">リサイクル原料を用いて色付き繊維を製造し、新規カラーや新素材の試作開発を行います。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
+        <div class="job-card__body"><div style="height:1px"></div><div class="recruit-tags"><span class="recruit-tag recruit-tag--fresh">新卒</span><span class="recruit-tag recruit-tag--career">経験者</span></div><p class="job-card__desc">リサイクル原料を用いて色付き繊維を製造し、新規カラーや新素材の試作開発を行います。</p><div class="job-card__footer"><span class="job-card__link-text">業務内容を見る</span><span class="job-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></div>
       </a>
     </div>
   </section>
