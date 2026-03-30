@@ -8,11 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--g1:#063d37;--g2:#0E857B;--g3:#2aada2;--g4:#3dcfc3;--pale:#f0faf9;--pale2:#e0f4f2;--line:#daeeed;--text:#0d2624;--sub:#4a7a77;--white:#fff;--yellow:#ffd60a;--orange:#e07b00;--radius:20px;--shadow:0 4px 24px rgba(6,61,55,.09);--shadow-md:0 12px 40px rgba(6,61,55,.16)}
+:root{--g1:#0E857B;--g2:#0E857B;--g3:#0E857B;--g4:#0E857B;--pale:#f0faf9;--pale2:#e0f4f2;--line:#daeeed;--text:#0d2624;--sub:#4a7a77;--white:#fff;--yellow:#ffd60a;--orange:#e07b00;--radius:20px;--shadow:0 4px 24px rgba(14,133,123,.09);--shadow-md:0 12px 40px rgba(14,133,123,.16)}
 html{scroll-behavior:smooth}
 body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);line-height:1.7}
 .hero{position:relative;background:var(--g1);padding:80px 40px 72px;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 100% at 100% 50%,rgba(42,173,162,.3) 0%,transparent 65%),radial-gradient(ellipse 40% 60% at 0% 100%,rgba(14,133,123,.2) 0%,transparent 60%)}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 100% at 100% 50%,rgba(14,133,123,.3) 0%,transparent 65%),radial-gradient(ellipse 40% 60% at 0% 100%,rgba(14,133,123,.2) 0%,transparent 60%)}
 .hero::after{content:"";position:absolute;right:-80px;top:-80px;width:360px;height:360px;border-radius:50%;border:1px solid rgba(255,255,255,.06)}
 .hero__inner{max-width:960px;margin:0 auto;position:relative;z-index:1}
 .hero__breadcrumb{font-family:"DM Sans",sans-serif;font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.08em;margin-bottom:28px}
@@ -20,7 +20,7 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
 .hero__breadcrumb a:hover{color:rgba(255,255,255,.9)}
 .hero__breadcrumb span{margin:0 8px;opacity:.5}
 .hero__eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
-.hero__dept{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--g4);background:rgba(61,207,195,.12);border:1px solid rgba(61,207,195,.35);padding:4px 14px;border-radius:999px}
+.hero__dept{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--g4);background:rgba(14,133,123,.12);border:1px solid rgba(14,133,123,.35);padding:4px 14px;border-radius:999px}
 .tag-fresh{font-size:13px;font-weight:800;color:#4a2e00;background:var(--yellow);padding:6px 16px;border-radius:999px;letter-spacing:.04em}
 .tag-career{font-size:13px;font-weight:800;color:#fff;background:linear-gradient(90deg,#e07b00,#f5a623);padding:6px 16px;border-radius:999px;letter-spacing:.04em}
 .hero__title{font-size:clamp(42px,6vw,72px);font-weight:900;color:var(--white);letter-spacing:-.03em;line-height:1.05;margin-bottom:16px}
@@ -48,7 +48,7 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
 .appeal-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g1),var(--g3),var(--g4))}
 .appeal-card:nth-child(1){animation-delay:.06s}.appeal-card:nth-child(2){animation-delay:.14s}.appeal-card:nth-child(3){animation-delay:.22s}
 .appeal-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
-.appeal-card__icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--g1),var(--g2));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(6,61,55,.25);flex-shrink:0}
+.appeal-card__icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--g1),var(--g2));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(14,133,123,.25);flex-shrink:0}
 .appeal-card__icon svg{width:22px;height:22px}
 .appeal-card__title{font-size:15px;font-weight:800;color:var(--text);letter-spacing:.01em}
 .appeal-card__desc{font-size:13px;line-height:1.8;color:var(--sub)}
@@ -58,7 +58,7 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
 .work-item:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
 .work-item__accent{width:6px;flex-shrink:0;background:linear-gradient(to bottom,var(--g1),var(--g3))}
 .work-item__icon-wrap{display:flex;align-items:center;justify-content:center;padding:28px 24px;flex-shrink:0}
-.work-item__icon{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,var(--g1),var(--g2));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(6,61,55,.25)}
+.work-item__icon{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,var(--g1),var(--g2));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(14,133,123,.25)}
 .work-item__icon svg{width:24px;height:24px}
 .work-item__content{padding:28px 28px 28px 8px;display:flex;flex-direction:column;justify-content:center;gap:8px}
 .work-item__name{font-size:16px;font-weight:800;color:var(--text);letter-spacing:.01em}
@@ -75,7 +75,7 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
 .tl-item{display:grid;grid-template-columns:68px 1fr;gap:0 20px;margin-bottom:8px;position:relative;animation:fadeUp .4s ease both}
 .tl-item:nth-child(1){animation-delay:.04s}.tl-item:nth-child(2){animation-delay:.09s}.tl-item:nth-child(3){animation-delay:.14s}.tl-item:nth-child(4){animation-delay:.19s}.tl-item:nth-child(5){animation-delay:.24s}.tl-item:nth-child(6){animation-delay:.29s}.tl-item:nth-child(7){animation-delay:.34s}
 .tl-item__time{font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;color:var(--g2);text-align:right;padding-top:16px;letter-spacing:.04em}
-.tl-item__card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:14px 20px;margin-bottom:8px;position:relative;transition:border-color .2s,box-shadow .2s;box-shadow:0 2px 8px rgba(6,61,55,.05)}
+.tl-item__card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:14px 20px;margin-bottom:8px;position:relative;transition:border-color .2s,box-shadow .2s;box-shadow:0 2px 8px rgba(14,133,123,.05)}
 .tl-item__card::before{content:"";position:absolute;left:-10px;top:18px;width:12px;height:12px;border-radius:50%;background:var(--g2);border:3px solid var(--white);box-shadow:0 0 0 2px var(--g2)}
 .tl-item__card:hover{border-color:var(--g3);box-shadow:0 6px 20px rgba(14,133,123,.12)}
 .tl-item__label{font-size:13px;font-weight:800;color:var(--g1);margin-bottom:3px}
@@ -97,7 +97,7 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
 .shift-col .tl-item__label{font-size:12px}
 .shift-col .tl-item__text{font-size:11px}
 .footer-cta{background:linear-gradient(135deg,var(--g1) 0%,#0a5248 100%);padding:72px 32px;text-align:center;position:relative;overflow:hidden;margin-top:80px}
-.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(42,173,162,.25) 0%,transparent 70%)}
+.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(14,133,123,.25) 0%,transparent 70%)}
 .footer-cta__inner{position:relative;z-index:1;max-width:560px;margin:0 auto}
 .footer-cta__title{font-size:clamp(22px,3vw,32px);font-weight:900;color:var(--white);margin-bottom:12px}
 .footer-cta__sub{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:32px;line-height:1.8}
@@ -106,7 +106,7 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:680px){.hero{padding:56px 20px 52px}.page{padding:48px 20px 0}.appeal-grid{grid-template-columns:1fr}.work-item{flex-direction:column}.work-item__accent{width:100%;height:4px}.work-item__icon-wrap{padding:20px 20px 0}.work-item__content{padding:16px 20px 24px}.shift-columns{grid-template-columns:1fr}.shift-columns--single{max-width:100%}.timeline::before{left:52px}.tl-item{grid-template-columns:52px 1fr;gap:0 14px}.tl-note{padding-left:66px}.footer-cta{padding:56px 20px}}
 </style>
-<style>.site-nav{position:sticky;top:0;z-index:1000;background:#063d37;box-shadow:0 2px 16px rgba(0,0,0,.25)}.site-nav__inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;padding:0 24px;height:58px;gap:32px}.site-nav__logo{font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0}.site-nav__list{list-style:none;display:flex;gap:4px;margin:0;padding:0;margin-left:auto}.site-nav__list>li>a{display:block;padding:0 14px;height:58px;line-height:58px;color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:500;transition:background .15s}.site-nav__list>li>a:hover{background:rgba(255,255,255,.1);color:#fff}.has-drop{position:relative}.drop{display:none;position:absolute;top:58px;left:0;background:#fff;list-style:none;margin:0;padding:8px 0;min-width:220px;border-radius:0 0 14px 14px;box-shadow:0 12px 40px rgba(0,0,0,.15)}.has-drop:hover .drop{display:block}.drop li a{display:block;padding:10px 20px;font-size:13px;color:#0d2624;text-decoration:none}.drop li a:hover{background:#f0faf9;color:#096059}.site-nav__toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}.site-nav__toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}@media(max-width:680px){.site-nav__toggle{display:flex}.site-nav__list{display:none;flex-direction:column;position:absolute;top:58px;left:0;right:0;background:#063d37;padding:12px 0;z-index:999}.site-nav.open .site-nav__list{display:flex}.has-drop:hover .drop{display:none}.drop{display:block!important;position:static;box-shadow:none;background:rgba(0,0,0,.15);border-radius:0}.drop li a{color:rgba(255,255,255,.8);padding:8px 32px}.site-nav__list>li>a{height:auto;line-height:1;padding:12px 24px}}</style>
+<style>.site-nav{position:sticky;top:0;z-index:1000;background:#0E857B;box-shadow:0 2px 16px rgba(0,0,0,.25)}.site-nav__inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;padding:0 24px;height:58px;gap:32px}.site-nav__logo{font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0}.site-nav__list{list-style:none;display:flex;gap:4px;margin:0;padding:0;margin-left:auto}.site-nav__list>li>a{display:block;padding:0 14px;height:58px;line-height:58px;color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:500;transition:background .15s}.site-nav__list>li>a:hover{background:rgba(255,255,255,.1);color:#fff}.has-drop{position:relative}.drop{display:none;position:absolute;top:58px;left:0;background:#fff;list-style:none;margin:0;padding:8px 0;min-width:220px;border-radius:0 0 14px 14px;box-shadow:0 12px 40px rgba(0,0,0,.15)}.has-drop:hover .drop{display:block}.drop li a{display:block;padding:10px 20px;font-size:13px;color:#0d2624;text-decoration:none}.drop li a:hover{background:#f0faf9;color:#0E857B}.site-nav__toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}.site-nav__toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}@media(max-width:680px){.site-nav__toggle{display:flex}.site-nav__list{display:none;flex-direction:column;position:absolute;top:58px;left:0;right:0;background:#0E857B;padding:12px 0;z-index:999}.site-nav.open .site-nav__list{display:flex}.has-drop:hover .drop{display:none}.drop{display:block!important;position:static;box-shadow:none;background:rgba(0,0,0,.15);border-radius:0}.drop li a{color:rgba(255,255,255,.8);padding:8px 32px}.site-nav__list>li>a{height:auto;line-height:1;padding:12px 24px}}</style>
 </head>
 <body>
 <nav class="site-nav"><div class="site-nav__inner"><a class="site-nav__logo" href="../index.html">株式会社オーツカ 採用サイト</a><button class="site-nav__toggle" aria-label="メニュー" onclick="this.closest('.site-nav').classList.toggle('open')"><span></span><span></span><span></span></button><ul class="site-nav__list"><li><a href="../index.html">ホーム</a></li><li class="has-drop"><a href="../shokusha/index.html">職種紹介</a><ul class="drop"><li><a href="../shokusha/seizou.html">製造</a></li><li><a href="../shokusha/kensa.html">検査</a></li><li><a href="../shokusha/hozen.html">保全</a></li><li><a href="../shokusha/eigyo.html">営業</a></li><li><a href="../shokusha/eigyo-jimu.html">営業事務</a></li><li><a href="../shokusha/seisan-gijutsu.html">生産技術</a></li><li><a href="../shokusha/kaihatsu-gijutsu.html">開発技術</a></li><li><a href="../shokusha/qa-customer.html">品質保証（顧客対応）</a></li><li><a href="../shokusha/qa-kensa.html">品質保証（検査）</a></li><li><a href="../shokusha/chotatsu.html">調達</a></li><li><a href="../shokusha/tsusho.html">オーツカ通商</a></li><li><a href="../shokusha/otsuka-koubunshi.html">大塚高分子工業</a></li></ul></li></ul></div></nav>

@@ -9,18 +9,18 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --g1: #063d37;
+    --g1: #0E857B;
     --g2: #0E857B;
-    --g3: #2aada2;
-    --g4: #3dcfc3;
+    --g3: #0E857B;
+    --g4: #0E857B;
     --g-pale: #f0faf9;
     --g-light: #c8ebe9;
     --text: #0d2624;
     --text-sub: #4a7a77;
     --white: #ffffff;
     --radius: 18px;
-    --shadow: 0 4px 24px rgba(6,61,55,.10);
-    --shadow-hover: 0 16px 48px rgba(6,61,55,.22);
+    --shadow: 0 4px 24px rgba(14,133,123,.10);
+    --shadow-hover: 0 16px 48px rgba(14,133,123,.22);
   }
   html { scroll-behavior: smooth; }
   body { font-family: 'Noto Sans JP', sans-serif; background: #f4f9f8; color: var(--text); }
@@ -48,7 +48,7 @@
   .hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(160deg, rgba(6,61,55,.82) 0%, rgba(6,61,55,.55) 60%, rgba(14,133,123,.4) 100%);
+    background: linear-gradient(160deg, rgba(14,133,123,.82) 0%, rgba(14,133,123,.55) 60%, rgba(14,133,123,.4) 100%);
     z-index: 1;
   }
   .hero__content { position: relative; z-index: 2; max-width: 780px; }
@@ -60,7 +60,7 @@
     letter-spacing: .22em;
     text-transform: uppercase;
     color: var(--g4);
-    border: 1px solid rgba(61,207,195,.5);
+    border: 1px solid rgba(14,133,123,.5);
     padding: 5px 16px;
     border-radius: 999px;
     margin-bottom: 24px;
@@ -75,7 +75,7 @@
   }
   .hero__title em {
     font-style: normal;
-    background: linear-gradient(90deg, #3dcfc3, #a0f0ea);
+    background: linear-gradient(90deg, #0E857B, #5eccc6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -99,7 +99,7 @@
     text-decoration: none;
     letter-spacing: .04em;
     transition: background .2s, transform .2s;
-    box-shadow: 0 8px 24px rgba(42,173,162,.4);
+    box-shadow: 0 8px 24px rgba(14,133,123,.4);
   }
   .hero__cta:hover { background: var(--g4); transform: translateY(-2px); }
   .hero__cta svg { width: 18px; height: 18px; }
@@ -189,7 +189,7 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(42,173,162,.07) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(14,133,123,.07) 0%, transparent 70%);
   }
   .dept__icon {
     width: 48px;
@@ -200,7 +200,7 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(6,61,55,.25);
+    box-shadow: 0 4px 12px rgba(14,133,123,.25);
   }
   .dept__icon svg { width: 22px; height: 22px; }
   .dept__name { font-size: 19px; font-weight: 800; color: var(--text); letter-spacing: .02em; }
@@ -232,7 +232,7 @@
     text-decoration: none;
     overflow: hidden;
     transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s cubic-bezier(.22,1,.36,1);
-    box-shadow: 0 2px 12px rgba(6,61,55,.06), 0 1px 3px rgba(0,0,0,.04);
+    box-shadow: 0 2px 12px rgba(14,133,123,.06), 0 1px 3px rgba(0,0,0,.04);
     animation: fadeUp .5s ease both;
     position: relative;
   }
@@ -246,7 +246,7 @@
   }
   .job-card:hover {
     transform: translateY(-8px) scale(1.01);
-    box-shadow: 0 24px 60px rgba(6,61,55,.16), 0 8px 20px rgba(6,61,55,.08);
+    box-shadow: 0 24px 60px rgba(14,133,123,.16), 0 8px 20px rgba(14,133,123,.08);
   }
 
   /* TOP AREA */
@@ -267,7 +267,7 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(42,173,162,.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(14,133,123,.08) 0%, transparent 70%);
   }
   .job-card__badge {
     width: 52px;
@@ -278,7 +278,7 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    box-shadow: 0 6px 16px rgba(6,61,55,.28);
+    box-shadow: 0 6px 16px rgba(14,133,123,.28);
     position: relative;
     z-index: 1;
   }
@@ -387,7 +387,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(42,173,162,.25) 0%, transparent 70%);
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(14,133,123,.25) 0%, transparent 70%);
   }
   .footer-cta__inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
   .footer-cta__title { font-size: clamp(22px, 3vw, 32px); font-weight: 900; color: var(--white); margin-bottom: 12px; }
@@ -423,7 +423,7 @@
     .stat { flex: 1 1 50%; border-right: none; border-bottom: 1px solid #daeeed; }
   }
 </style>
-<style>.site-nav{position:sticky;top:0;z-index:1000;background:#063d37;box-shadow:0 2px 16px rgba(0,0,0,.25)}.site-nav__inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;padding:0 24px;height:58px;gap:32px}.site-nav__logo{font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0}.site-nav__list{list-style:none;display:flex;gap:4px;margin:0;padding:0;margin-left:auto}.site-nav__list>li>a{display:block;padding:0 14px;height:58px;line-height:58px;color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:500;transition:background .15s}.site-nav__list>li>a:hover{background:rgba(255,255,255,.1);color:#fff}.has-drop{position:relative}.drop{display:none;position:absolute;top:58px;left:0;background:#fff;list-style:none;margin:0;padding:8px 0;min-width:220px;border-radius:0 0 14px 14px;box-shadow:0 12px 40px rgba(0,0,0,.15)}.has-drop:hover .drop{display:block}.drop li a{display:block;padding:10px 20px;font-size:13px;color:#0d2624;text-decoration:none}.drop li a:hover{background:#f0faf9;color:#096059}.site-nav__toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}.site-nav__toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}@media(max-width:680px){.site-nav__toggle{display:flex}.site-nav__list{display:none;flex-direction:column;position:absolute;top:58px;left:0;right:0;background:#063d37;padding:12px 0;z-index:999}.site-nav.open .site-nav__list{display:flex}.has-drop:hover .drop{display:none}.drop{display:block!important;position:static;box-shadow:none;background:rgba(0,0,0,.15);border-radius:0}.drop li a{color:rgba(255,255,255,.8);padding:8px 32px}.site-nav__list>li>a{height:auto;line-height:1;padding:12px 24px}}</style>
+<style>.site-nav{position:sticky;top:0;z-index:1000;background:#0E857B;box-shadow:0 2px 16px rgba(0,0,0,.25)}.site-nav__inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;padding:0 24px;height:58px;gap:32px}.site-nav__logo{font-family:"Noto Sans JP",sans-serif;font-size:14px;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap;flex-shrink:0}.site-nav__list{list-style:none;display:flex;gap:4px;margin:0;padding:0;margin-left:auto}.site-nav__list>li>a{display:block;padding:0 14px;height:58px;line-height:58px;color:rgba(255,255,255,.85);text-decoration:none;font-size:13px;font-weight:500;transition:background .15s}.site-nav__list>li>a:hover{background:rgba(255,255,255,.1);color:#fff}.has-drop{position:relative}.drop{display:none;position:absolute;top:58px;left:0;background:#fff;list-style:none;margin:0;padding:8px 0;min-width:220px;border-radius:0 0 14px 14px;box-shadow:0 12px 40px rgba(0,0,0,.15)}.has-drop:hover .drop{display:block}.drop li a{display:block;padding:10px 20px;font-size:13px;color:#0d2624;text-decoration:none}.drop li a:hover{background:#f0faf9;color:#0E857B}.site-nav__toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}.site-nav__toggle span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}@media(max-width:680px){.site-nav__toggle{display:flex}.site-nav__list{display:none;flex-direction:column;position:absolute;top:58px;left:0;right:0;background:#0E857B;padding:12px 0;z-index:999}.site-nav.open .site-nav__list{display:flex}.has-drop:hover .drop{display:none}.drop{display:block!important;position:static;box-shadow:none;background:rgba(0,0,0,.15);border-radius:0}.drop li a{color:rgba(255,255,255,.8);padding:8px 32px}.site-nav__list>li>a{height:auto;line-height:1;padding:12px 24px}}</style>
 </head>
 <body>
 <nav class="site-nav"><div class="site-nav__inner"><a class="site-nav__logo" href="../index.html">株式会社オーツカ 採用サイト</a><button class="site-nav__toggle" aria-label="メニュー" onclick="this.closest('.site-nav').classList.toggle('open')"><span></span><span></span><span></span></button><ul class="site-nav__list"><li><a href="../index.html">ホーム</a></li><li class="has-drop"><a href="../shokusha/index.html">職種紹介</a><ul class="drop"><li><a href="../shokusha/seizou.html">製造</a></li><li><a href="../shokusha/kensa.html">検査</a></li><li><a href="../shokusha/hozen.html">保全</a></li><li><a href="../shokusha/eigyo.html">営業</a></li><li><a href="../shokusha/eigyo-jimu.html">営業事務</a></li><li><a href="../shokusha/seisan-gijutsu.html">生産技術</a></li><li><a href="../shokusha/kaihatsu-gijutsu.html">開発技術</a></li><li><a href="../shokusha/qa-customer.html">品質保証（顧客対応）</a></li><li><a href="../shokusha/qa-kensa.html">品質保証（検査）</a></li><li><a href="../shokusha/chotatsu.html">調達</a></li><li><a href="../shokusha/tsusho.html">オーツカ通商</a></li><li><a href="../shokusha/otsuka-koubunshi.html">大塚高分子工業</a></li></ul></li></ul></div></nav>
