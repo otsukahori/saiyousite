@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -20,8 +20,8 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
 .hero__breadcrumb a:hover{color:rgba(255,255,255,.9)}
 .hero__breadcrumb span{margin:0 8px;opacity:.5}
 .hero__eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
-.hero__dept{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--g4);background:rgba(14,133,123,.12);border:1px solid rgba(14,133,123,.35);padding:4px 14px;border-radius:999px}
-.tag-fresh{font-size:13px;font-weight:800;color:#4a2e00;background:var(--yellow);padding:6px 16px;border-radius:999px;letter-spacing:.04em}
+.hero__dept{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.5);padding:4px 14px;border-radius:999px}
+.tag-fresh{font-size:13px;font-weight:700;color:#000;background:#fef3c7;padding:5px 16px;border-radius:999px;letter-spacing:.04em;border:1.5px solid #f0d080}
 .hero__title{font-size:clamp(42px,6vw,72px);font-weight:900;color:var(--white);letter-spacing:-.03em;line-height:1.05;margin-bottom:16px}
 .hero__sub{font-size:16px;color:rgba(255,255,255,.65);max-width:500px;line-height:1.8}
 .page{max-width:960px;margin:0 auto;padding:72px 32px 0}
@@ -36,10 +36,10 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
 .staff-card__photo{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
 .staff-card__photo-placeholder{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,var(--pale2),var(--pale));display:flex;align-items:center;justify-content:center}
 .staff-card__photo-placeholder svg{width:56px;height:56px;opacity:.25}
-.staff-card__body{padding:24px 26px 28px}
-.staff-card__role{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--g3);margin-bottom:6px}
-.staff-card__name{font-size:20px;font-weight:900;color:var(--text);margin-bottom:2px;letter-spacing:-.01em}
-.staff-card__tenure{font-size:12px;color:var(--sub);margin-bottom:16px}
+.staff-card__body{padding:12px 14px 18px}.staff-card__info-row{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-bottom:14px}
+.staff-card__role{font-family:"DM Sans",sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--g3);margin-bottom:6px}
+.staff-card__name{font-size:24px;font-weight:900;color:var(--text);margin-bottom:2px;letter-spacing:-.01em}.staff-card__namelabel{font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sub);margin-bottom:2px}
+.staff-card__tenure{font-size:13px;color:var(--sub);margin-bottom:0;display:flex;flex-direction:column;align-items:flex-start;gap:0;text-align:left;white-space:nowrap}.staff-card__tenure-num{font-size:40px;font-weight:900;color:var(--g1);line-height:1;letter-spacing:-.02em}
 .staff-card__divider{height:1px;background:var(--line);margin-bottom:16px}
 .staff-card__comment{font-size:13px;line-height:1.85;color:#2a4a47}
 .appeal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:12px}
@@ -118,8 +118,8 @@ body{font-family:"Noto Sans JP",sans-serif;background:#f4f9f8;color:var(--text);
   <section style="margin-bottom:72px">
     <div class="sec-heading"><span class="sec-heading__en">Our team members</span><div class="sec-heading__text">先輩社員の紹介</div></div>
     <div class="staff-grid">
-      <div class="staff-card"><img class="staff-card__photo" src="../images/保全.JPG" alt="社員写真"><div class="staff-card__body"><div class="staff-card__role">生産技術担当</div><div class="staff-card__name">社員名</div><div class="staff-card__tenure">入社歴〇〇年</div><div class="staff-card__divider"></div><p class="staff-card__comment">量産立上げってほんとに山あり谷ありなんですけど、安定して動き出した瞬間の達成感は何物にも代えられないんです！現場と一緒に課題を解決していくのが最高に好きで！</p></div></div>
-      <div class="staff-card"><div class="staff-card__photo-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="#0E857B" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="staff-card__body"><div class="staff-card__role">生産技術担当</div><div class="staff-card__name">社員名</div><div class="staff-card__tenure">入社歴〇〇年</div><div class="staff-card__divider"></div><p class="staff-card__comment">データを眺めて原因を突き止めたときって、パズルのピースがはまる感覚があって楽しいんですよ！改善した工程がスムーズに流れる様子を見ると、ニヤッとしてしまいます！</p></div></div>
+      <div class="staff-card"><img class="staff-card__photo" src="../images/保全.JPG" alt="社員写真"><div class="staff-card__body"><div class="staff-card__role">生産技術担当</div><div class="staff-card__info-row"><div class="staff-card__tenure"><span>勤続年数</span><div style="display:flex;align-items:baseline;gap:1px"><span class="staff-card__tenure-num">4</span><span>年</span></div></div><div style="text-align:right"><div class="staff-card__namelabel">社員名</div><div class="staff-card__name">S.Y</div></div></div><div class="staff-card__divider"></div><p class="staff-card__comment">量産が立ち上がるまでは本当に大変なんですが、安定して流れ始めたときの達成感がそれを全部忘れさせてくれます。現場の人たちと一緒に解決していくのが好きです。</p></div></div>
+      <div class="staff-card"><img class="staff-card__photo" src="../images/photo-ng.png" alt="写真なし" style="object-fit:contain;background:#f8f8f8"><div class="staff-card__body"><div class="staff-card__role">生産技術担当</div><div class="staff-card__info-row"><div class="staff-card__tenure"><span>勤続年数</span><div style="display:flex;align-items:baseline;gap:1px"><span class="staff-card__tenure-num">33</span><span>年</span></div></div><div style="text-align:right"><div class="staff-card__namelabel">社員名</div><div class="staff-card__name">M.T</div></div></div><div class="staff-card__divider"></div><p class="staff-card__comment">データを見ながら原因を探っていくのって、パズルみたいな感覚があって楽しいんですよ。改善がうまくいったときは、工程を見てこっそりニヤッとしてます（笑）。</p></div></div>
     </div>
   </section>
   <section style="margin-bottom:72px">
