@@ -207,6 +207,14 @@
     transition: color .2s, text-decoration-color .2s; }
   .cta__link:hover { color: var(--accent2); text-decoration-color: var(--accent2); }
   .cta__link svg { width: 13px; height: 13px; }
+  .mynavi-links { display: flex; flex-wrap: wrap; gap: 14px; }
+  .hero .mynavi-links { margin-top: 28px; }
+  .cta .mynavi-links { justify-content: center; margin: 0 0 22px; }
+  .mynavi-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #fff;
+    font-size: 14px; font-weight: 700; padding: 15px 30px; border-radius: 4px; letter-spacing: .06em;
+    transition: background .2s, transform .2s, box-shadow .2s; box-shadow: 0 10px 30px rgba(42,127,255,.35); }
+  .mynavi-btn:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 16px 40px rgba(42,127,255,.5); }
+  .mynavi-btn svg { width: 15px; height: 15px; }
 
   /* ─── FOOTER ─── */
   .footer { padding: 40px; text-align: center; font-size: 12px; color: var(--sub2); border-top: 1px solid var(--line); background: #070a12; letter-spacing: .04em; }
@@ -465,6 +473,10 @@
     <h1 class="hero__title">技術で、<br><span class="accent">未来</span>をつくる。</h1>
     <p class="hero__sub">信頼をカタチに、価値をつなぐ。</p>
     <p class="hero__lead">株式会社オーツカは、確かな技術力と柔軟な発想で、お客様の課題解決に挑み続けるプロフェッショナル集団です。ともに成長し、未来を創る仲間を募集しています。</p>
+    <div class="mynavi-links reveal">
+      <a class="mynavi-btn" href="https://job.mynavi.jp/27/pc/search/corp222214/outline.html" target="_blank" rel="noopener">27卒 マイナビ<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a>
+      <a class="mynavi-btn" href="https://job.mynavi.jp/28/pc/search/corp222214/outline.html" target="_blank" rel="noopener">28卒 マイナビ<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a>
+    </div>
     <a class="hero__scroll" href="#jobs">
       <span>スクロール</span>
       <span class="hero__scroll-line"></span>
@@ -706,6 +718,10 @@
 <section class="cta" id="cta">
   <h2 class="cta__title reveal">一緒に、未来をつくろう。</h2>
   <p class="cta__sub reveal">各職種の詳細情報・応募方法は各ページからご確認ください。<br>ご不明な点はお気軽にお問い合わせください。</p>
+  <div class="mynavi-links reveal">
+    <a class="mynavi-btn" href="https://job.mynavi.jp/27/pc/search/corp222214/outline.html" target="_blank" rel="noopener">27卒 マイナビ<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a>
+    <a class="mynavi-btn" href="https://job.mynavi.jp/28/pc/search/corp222214/outline.html" target="_blank" rel="noopener">28卒 マイナビ<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a>
+  </div>
   <a class="cta__btn reveal" href="#jobs">募集職種を見る
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
   </a>
