@@ -393,6 +393,30 @@
   }
   .footer-cta__btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.28); }
 
+  /* ─── MYNAVI LINKS ─── */
+  .mynavi-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+  .hero .mynavi-links { margin-top: 16px; }
+  .footer-cta .mynavi-links { justify-content: center; margin: 0 0 20px; }
+  .mynavi-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 13px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    letter-spacing: .04em;
+    color: var(--white);
+    background: rgba(255,255,255,.14);
+    border: 1.5px solid rgba(255,255,255,.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background .2s, color .2s, transform .2s;
+  }
+  .mynavi-btn:hover { background: var(--white); color: var(--g1); transform: translateY(-2px); }
+  .mynavi-btn svg { width: 14px; height: 14px; }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 759px) {
     .hero { min-height: 70vh; padding: 100px 20px 70px; }
@@ -424,6 +448,10 @@
       募集職種を見る
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </a>
+    <div class="mynavi-links">
+      <a class="mynavi-btn" href="https://job.mynavi.jp/27/pc/search/corp222214/outline.html" target="_blank" rel="noopener">27卒 マイナビ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+      <a class="mynavi-btn" href="https://job.mynavi.jp/28/pc/search/corp222214/outline.html" target="_blank" rel="noopener">28卒 マイナビ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+    </div>
   </div>
   <div class="hero__scroll">
     <div class="hero__scroll-line"></div>
@@ -564,6 +592,10 @@
   <div class="footer-cta__inner">
     <h2 class="footer-cta__title">一緒に働きませんか？</h2>
     <p class="footer-cta__sub">各職種の詳細情報・応募方法は各ページからご確認ください。<br>不明な点はお気軽にお問い合わせください。</p>
+    <div class="mynavi-links">
+      <a class="mynavi-btn" href="https://job.mynavi.jp/27/pc/search/corp222214/outline.html" target="_blank" rel="noopener">27卒 マイナビ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+      <a class="mynavi-btn" href="https://job.mynavi.jp/28/pc/search/corp222214/outline.html" target="_blank" rel="noopener">28卒 マイナビ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+    </div>
     <a class="footer-cta__btn" href="../index.html">
       トップページへ戻る
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
