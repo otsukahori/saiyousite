@@ -1,2 +1,938 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0;url=shokusha/index.html"></head></html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用サイト - 株式会社オーツカ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0f1a;
+    --panel: #121a2b;
+    --panel2: #17203440;
+    --accent: #2a7fff;
+    --accent2: #4d9bff;
+    --accent-soft: rgba(42,127,255,.14);
+    --line: rgba(255,255,255,.10);
+    --text: #eef2f8;
+    --sub: #97a4bd;
+    --sub2: #6b7896;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ─── NAV ─── */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 40px;
+    transition: background .3s, padding .3s, border-color .3s;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled { background: rgba(10,15,26,.88); backdrop-filter: blur(14px); padding: 14px 40px; border-bottom-color: var(--line); }
+  .nav__logo { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 20px; letter-spacing: .02em; }
+  .nav__logo-mark {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #1a5fd0);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 17px; color: #fff;
+    box-shadow: 0 0 20px rgba(42,127,255,.5);
+  }
+  .nav__menu { display: flex; align-items: center; gap: 30px; }
+  .nav__link { font-size: 13px; font-weight: 500; color: var(--sub); letter-spacing: .04em; transition: color .2s; }
+  .nav__link:hover { color: var(--text); }
+  .nav__entry {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff; font-size: 13px; font-weight: 700;
+    padding: 12px 24px; border-radius: 4px; letter-spacing: .04em;
+    transition: background .2s, transform .2s, box-shadow .2s;
+  }
+  .nav__entry:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(42,127,255,.4); }
+  .nav__entry svg { width: 15px; height: 15px; }
+
+  /* ─── HERO ─── */
+  .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden;
+    background: radial-gradient(1200px 600px at 78% 15%, #12203c 0%, transparent 55%), linear-gradient(160deg, #0a0f1a 0%, #0b1120 55%, #090d17 100%); }
+  .hero__grid { position: absolute; inset: 0; z-index: 0; opacity: .5;
+    background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 64px 64px; -webkit-mask-image: radial-gradient(circle at 30% 40%, #000 0%, transparent 75%); mask-image: radial-gradient(circle at 30% 40%, #000 0%, transparent 75%); }
+
+  /* diagonal video panel on the right */
+  .hero__media { position: absolute; top: 0; right: 0; bottom: 0; width: 58%; z-index: 1;
+    clip-path: polygon(22% 0, 100% 0, 100% 100%, 8% 100%); overflow: hidden; background: #0a0f1a; }
+  .hero__video { position: absolute; top: 50%; left: 50%; min-width: 118%; min-height: 118%;
+    width: auto; height: auto; transform: translate(-50%, -50%); object-fit: cover;
+    opacity: 0; transition: opacity .6s ease; }
+  .hero__video.ready { opacity: 1; }
+  .hero__media::after { content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(115deg, #0a0f1a 8%, rgba(10,15,26,.5) 30%, rgba(20,60,130,.30) 62%, rgba(42,127,255,.18) 100%);
+    mix-blend-mode: multiply; }
+  .hero__media::before { content: ''; position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(90deg, #0a0f1a 0%, rgba(10,15,26,.15) 26%, transparent 45%); }
+
+  .hero__vtext { position: absolute; right: 34px; bottom: 60px; z-index: 3;
+    font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .32em;
+    color: rgba(255,255,255,.55); line-height: 2.6; text-align: right; }
+
+  .hero__content { position: relative; z-index: 4; max-width: 1360px; margin: 0 auto; width: 100%; padding: 0 40px; }
+  .hero__eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 26px;
+    font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .22em; color: var(--accent2); }
+  .hero__eyebrow::before { content: ''; width: 34px; height: 1px; background: var(--accent2); }
+  .hero__title { font-size: clamp(46px, 8vw, 104px); font-weight: 900; line-height: 1.08; letter-spacing: .01em;
+    text-shadow: 0 4px 40px rgba(0,0,0,.5); }
+  .hero__title .accent { color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,.85); }
+  .hero__sub { margin-top: 26px; font-size: clamp(17px, 2.4vw, 26px); font-weight: 700; letter-spacing: .12em; color: #dbe6fb; }
+  .hero__lead { margin-top: 24px; max-width: 440px; font-size: 14px; line-height: 2.1; color: var(--sub); }
+  .hero__scroll { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 48px;
+    font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: .24em; color: var(--sub2); }
+  .hero__scroll-line { width: 1px; height: 46px; background: linear-gradient(to bottom, var(--accent2), transparent); animation: scrollLine 1.7s ease-in-out infinite; }
+  @keyframes scrollLine { 0%,100%{opacity:.35;transform:scaleY(.55) translateY(-5px)} 50%{opacity:1;transform:scaleY(1) translateY(0)} }
+
+  /* ─── SECTION SHELL ─── */
+  .section { position: relative; padding: 110px 40px; }
+  .section__head { text-align: center; margin-bottom: 64px; }
+  .section__en { display: block; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: .34em; color: var(--accent2); margin-bottom: 14px; }
+  .section__jp { font-size: clamp(28px, 4vw, 40px); font-weight: 900; letter-spacing: .14em; }
+  .section__rule { width: 44px; height: 3px; background: var(--accent); margin: 22px auto 0; border-radius: 2px; }
+
+  /* ─── JOB DESCRIPTION TABLES ─── */
+  .jd { background: linear-gradient(180deg, #eef2f7 0%, #e5ebf3 100%); border-top: 1px solid var(--line); overflow: hidden; }
+  .jd-grid { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .jd-card { position: relative; background: #fff; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 14px 40px rgba(20,40,80,.10); transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s; }
+  .jd-card:hover { transform: translateY(-4px); box-shadow: 0 20px 54px rgba(20,40,80,.15); }
+  .jd-card--career { position: relative; }
+  .jd-card__head { position: relative; padding: 30px 30px 26px; overflow: hidden;
+    background: linear-gradient(120deg, #1a5fd0 0%, #2a7fff 55%, #4d9bff 100%); }
+  .jd-card--career .jd-card__head { background: linear-gradient(120deg, #14213d 0%, #1f2f52 60%, #2a3f6b 100%); }
+  .jd-card__head::after { content: ''; position: absolute; right: -40px; top: -60px; width: 180px; height: 180px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.16) 0%, transparent 70%); }
+  .jd-card__eyebrow { position: relative; z-index: 1; display: block; font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: .24em; color: rgba(255,255,255,.75); margin-bottom: 8px; }
+  .jd-card__badge { position: relative; z-index: 1; display: block; font-size: 24px; font-weight: 900; color: #fff; letter-spacing: .02em; }
+  .jd-list { list-style: none; margin: 0; padding: 10px 8px 14px; }
+  .jd-row { display: grid; grid-template-columns: 116px 1fr; gap: 4px 18px; align-items: start;
+    padding: 15px 22px; border-radius: 10px; transition: background .2s; }
+  .jd-row:hover { background: #f4f8ff; }
+  .jd-row + .jd-row { border-top: 1px solid rgba(20,30,50,.06); }
+  .jd-row__icon-label { display: flex; align-items: center; gap: 9px; padding-top: 1px; }
+  .jd-row__icon { flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px;
+    background: linear-gradient(135deg, #eaf1ff, #dbe8ff); display: flex; align-items: center; justify-content: center; }
+  .jd-row__icon svg { width: 14px; height: 14px; stroke: #1f6fe6; }
+  .jd-card--career .jd-row__icon { background: linear-gradient(135deg, #eef1f6, #e2e6ee); }
+  .jd-card--career .jd-row__icon svg { stroke: #384258; }
+  .jd-row__label { font-size: 13px; font-weight: 800; color: #18202f; letter-spacing: .01em; }
+  .jd-row__value { font-size: 13px; line-height: 1.85; color: #55617a; }
+  .jd-row__value a { color: var(--accent2); font-weight: 600; }
+  @media (max-width: 900px) {
+    .jd-grid { grid-template-columns: 1fr; gap: 16px; }
+    .jd-card__head { padding: 18px 20px 16px; }
+    .jd-card__eyebrow { font-size: 9px; margin-bottom: 4px; letter-spacing: .18em; }
+    .jd-card__badge { font-size: 18px; }
+    .jd-list { padding: 4px 4px 8px; }
+    .jd-row { grid-template-columns: 1fr; gap: 2px; padding: 10px 16px; }
+    .jd-row__icon-label { gap: 7px; margin-bottom: 1px; }
+    .jd-row__icon { width: 20px; height: 20px; border-radius: 6px; }
+    .jd-row__icon svg { width: 11px; height: 11px; }
+    .jd-row__label { font-size: 11.5px; }
+    .jd-row__value { font-size: 11.5px; line-height: 1.65; padding-left: 27px; }
+  }
+
+  /* ─── JOB CATEGORY ─── */
+  .jobs { background: linear-gradient(180deg, #090d17 0%, #0b1222 100%); border-top: 1px solid var(--line); }
+  .job-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .job-cat { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; margin-top: 44px; }
+  .job-cat:first-child { margin-top: 0; }
+  .job-cat__en { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .22em; color: var(--accent2); }
+  .job-cat__name { font-size: clamp(20px, 2.4vw, 26px); font-weight: 900; letter-spacing: .1em; }
+  .job-cat__count { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .06em; color: var(--accent2); background: var(--accent-soft); border: 1px solid rgba(42,127,255,.35); padding: 4px 12px; border-radius: 999px; }
+  .job-cat__line { flex: 1; height: 1px; background: var(--line); }
+  .job-filter { display: flex; justify-content: center; gap: 10px; margin: -28px auto 48px; }
+  .job-filter__btn { font-family: 'Noto Sans JP', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .04em;
+    padding: 9px 22px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel);
+    color: var(--sub); cursor: pointer; transition: background .2s, color .2s, border-color .2s, transform .15s; }
+  .job-filter__btn:hover { transform: translateY(-1px); }
+  .job-filter__btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .job-filter__btn.active[data-filter="career"] { background: #2e7d4f; border-color: #2e7d4f; }
+  .job-card.is-hidden { display: none; }
+  .job-cat.is-hidden { display: none; }
+  .job-card { position: relative; display: block; height: 320px; border-radius: 8px; overflow: hidden;
+    border: 1px solid var(--line); background: var(--panel); isolation: isolate;
+    transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .35s, box-shadow .35s; }
+  .job-card__img { position: absolute; inset: 0; background-size: cover; background-position: center;
+    transform: scale(1.04); transition: transform .55s cubic-bezier(.22,1,.36,1); z-index: 0; }
+  .job-card::after { content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(9,13,23,.15) 0%, rgba(9,13,23,.55) 46%, rgba(9,13,23,.95) 100%); }
+  .job-card:hover { transform: translateY(-6px); border-color: rgba(42,127,255,.6); box-shadow: 0 20px 50px rgba(0,0,0,.55); }
+  .job-card:hover .job-card__img { transform: scale(1.12); }
+  .job-card__inner { position: absolute; inset: 0; z-index: 2; padding: 24px; display: flex; flex-direction: column; }
+  .job-card__num { font-family: 'DM Sans', sans-serif; font-size: 34px; font-weight: 700; color: var(--accent2); line-height: 1; letter-spacing: .02em; }
+  .job-card__dept { margin-top: auto; font-size: 11px; font-weight: 500; letter-spacing: .1em; color: var(--sub); margin-bottom: 6px; }
+  .job-card__title { font-size: 21px; font-weight: 900; letter-spacing: .04em; }
+  .job-card__tags { display: flex; gap: 6px; margin-top: 12px; }
+  .job-tag { font-size: 10px; font-weight: 700; letter-spacing: .06em; padding: 3px 9px; border-radius: 3px; }
+  .job-tag--fresh { background: var(--accent-soft); color: var(--accent2); border: 1px solid rgba(42,127,255,.35); }
+  .job-tag--career { background: rgba(255,255,255,.06); color: var(--sub); border: 1px solid var(--line); }
+  .job-card__desc { margin-top: 12px; font-size: 12px; line-height: 1.75; color: var(--sub); max-height: 0; opacity: 0; overflow: hidden;
+    transition: max-height .4s ease, opacity .3s ease, margin-top .4s ease; }
+  .job-card:hover .job-card__desc { max-height: 90px; opacity: 1; }
+  .job-card__go { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 12px; font-weight: 700; color: var(--accent2); }
+  .job-card__go svg { width: 15px; height: 15px; transition: transform .3s; }
+  .job-card:hover .job-card__go svg { transform: translateX(5px); }
+
+  /* ─── STATS ─── */
+  .stats { display: flex; justify-content: center; gap: 0; max-width: 900px; margin: 80px auto 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .stats__item { flex: 1; padding: 30px 20px; text-align: center; border-right: 1px solid var(--line); background: var(--panel2); }
+  .stats__item:last-child { border-right: none; }
+  .stats__num { font-family: 'DM Sans', sans-serif; font-size: clamp(30px, 4vw, 44px); font-weight: 700; color: var(--accent2); line-height: 1; }
+  .stats__label { margin-top: 8px; font-size: 11px; letter-spacing: .08em; color: var(--sub); }
+
+  /* ─── CTA ─── */
+  .cta { position: relative; text-align: center; padding: 120px 40px;
+    background: radial-gradient(800px 400px at 50% 0%, #14264a 0%, transparent 60%), #090d17; border-top: 1px solid var(--line); }
+  .cta__title { font-size: clamp(28px, 4vw, 44px); font-weight: 900; letter-spacing: .06em; }
+  .cta__sub { margin: 20px auto 40px; max-width: 560px; font-size: 14px; line-height: 2; color: var(--sub); }
+  .cta__btn { display: inline-flex; align-items: center; gap: 12px; background: var(--accent); color: #fff;
+    font-size: 15px; font-weight: 700; padding: 18px 44px; border-radius: 4px; letter-spacing: .06em;
+    transition: background .2s, transform .2s, box-shadow .2s; box-shadow: 0 10px 30px rgba(42,127,255,.35); }
+  .cta__btn:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 16px 40px rgba(42,127,255,.5); }
+  .cta__btn svg { width: 18px; height: 18px; }
+  .cta__links { margin-top: 22px; }
+  .cta__link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500;
+    color: var(--sub); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line);
+    transition: color .2s, text-decoration-color .2s; }
+  .cta__link:hover { color: var(--accent2); text-decoration-color: var(--accent2); }
+  .cta__link svg { width: 13px; height: 13px; }
+
+  /* ─── FOOTER ─── */
+  .footer { padding: 40px; text-align: center; font-size: 12px; color: var(--sub2); border-top: 1px solid var(--line); background: #070a12; letter-spacing: .04em; }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 1024px) {
+    .job-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero__media { width: 66%; }
+  }
+  @media (max-width: 820px) {
+    .nav { padding: 14px 18px; }
+    .nav__menu { display: none; }
+    .hero { min-height: 88vh; }
+    .hero__media { width: 100%; opacity: .32; clip-path: none; }
+    .hero__vtext { display: none; }
+    .hero__content { padding: 0 22px; }
+    .hero__title { font-size: clamp(38px, 10vw, 58px); }
+    .hero__eyebrow { margin-bottom: 18px; }
+    .hero__lead { font-size: 13px; line-height: 1.9; }
+    .hero__scroll { margin-top: 32px; }
+    .section, .cta { padding: 52px 18px; }
+    .section__head { margin-bottom: 40px; }
+    .section__jp { font-size: clamp(24px, 6vw, 30px); }
+    .job-cat { margin-top: 30px; }
+  }
+  @media (max-width: 560px) {
+    * { -webkit-tap-highlight-color: transparent; }
+    html { -webkit-text-size-adjust: 100%; }
+    .job-grid { grid-template-columns: 1fr; gap: 14px; }
+    .job-card { height: 220px; border-radius: 14px; }
+    .job-card__inner { padding: 18px; }
+    .job-card__num { font-size: 26px; }
+    .job-card__title { font-size: 18px; }
+    .job-card__desc { max-height: 70px; opacity: 1; font-size: 11.5px; line-height: 1.6; }
+    .job-card__go { margin-top: 10px; font-size: 11px; }
+    .stats { flex-direction: row; flex-wrap: wrap; border-radius: 14px; margin-top: 48px; }
+    .stats__item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid var(--line); padding: 20px 12px; }
+    .stats__item:nth-child(odd) { border-right: 1px solid var(--line); }
+    .stats__item:last-child { border-bottom: none; }
+    .stats__num { font-size: 26px; }
+    .stats__label { font-size: 10px; }
+    .cta__title { font-size: 24px; }
+    .cta__sub { font-size: 12.5px; margin: 14px auto 28px; }
+    .cta__btn { padding: 15px 32px; font-size: 14px; }
+    .footer { padding: 24px; font-size: 11px; }
+  }
+  /* native-app feel on touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    a, button { -webkit-tap-highlight-color: transparent; }
+    .job-card { transition: transform .15s ease, opacity .15s ease; }
+    .job-card:active { transform: scale(.97); opacity: .92; }
+    .cta__btn:active, .nav__entry:active { transform: scale(.96); }
+  }
+</style>
+<style id="light-theme">
+  :root{--bg:#f7f9fc;--panel:#fff;--panel2:#fff;--line:rgba(20,30,50,.10);--text:#18202f;--sub:#5a6577;--sub2:#8a94a6;--accent2:#1f6fe6}
+  body{background:linear-gradient(180deg,#eef2f7 0%,#e5ebf3 100%)!important}
+  /* NAV: light text over dark hero, dark text once scrolled onto light page */
+  .nav__logo{color:#fff!important}
+  .nav__link{color:rgba(255,255,255,.78)!important}
+  .nav__link:hover{color:#fff!important}
+  .nav.scrolled{background:rgba(255,255,255,.92)!important}
+  .nav.scrolled .nav__logo{color:#18202f!important}
+  .nav.scrolled .nav__link{color:#5a6577!important}
+  .nav.scrolled .nav__link:hover{color:#18202f!important}
+  /* HERO stays dark */
+  .hero{background:radial-gradient(1200px 600px at 78% 15%,#12203c 0%,transparent 55%),linear-gradient(160deg,#0a0f1a 0%,#0b1120 55%,#090d17 100%)!important}
+  .hero__grid{background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px)!important}
+  .hero__media::after{background:linear-gradient(115deg,#0a0f1a 8%,rgba(10,15,26,.5) 30%,rgba(20,60,130,.30) 62%,rgba(42,127,255,.18) 100%)!important;mix-blend-mode:multiply!important}
+  .hero__media::before{background:linear-gradient(90deg,#0a0f1a 0%,rgba(10,15,26,.15) 26%,transparent 45%)!important}
+  .hero__vtext{color:rgba(255,255,255,.55)!important}
+  .hero__title{color:#fff!important;text-shadow:0 4px 40px rgba(0,0,0,.5)!important}
+  .hero__title .accent{color:transparent!important;-webkit-text-stroke:1.5px rgba(255,255,255,.85)!important}
+  .hero__sub{color:#dbe6fb!important}
+  .hero__lead{color:#c9d5ea!important;text-shadow:0 1px 14px rgba(10,15,26,.65)}
+  .hero__scroll{color:rgba(255,255,255,.6)!important}
+  .jobs{background:transparent!important;border-top:1px solid rgba(20,30,50,.06)!important}
+  .cta{background:radial-gradient(800px 400px at 50% 0%,rgba(220,232,250,.28) 0%,transparent 60%)!important;border-top:1px solid rgba(20,30,50,.05)!important}
+  .footer{background:rgba(255,255,255,.5)!important;color:#8a94a6!important;backdrop-filter:blur(8px)!important}
+  /* frosted translucent panels for a sheer look */
+  .stats{background:rgba(255,255,255,.55)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important;box-shadow:0 10px 40px rgba(20,40,80,.06)!important}
+  .stats__item{background:transparent!important}
+  /* job cards sit on darkened photos → keep their text light */
+  .job-card__title{color:#fff!important}
+  .job-card__dept{color:rgba(255,255,255,.78)!important}
+  .job-card__desc{color:rgba(255,255,255,.9)!important}
+  .job-card__num{color:#7db4ff!important}
+  .job-card__go{color:#9cc4ff!important}
+  .job-tag--fresh{background:#d6e8ff!important;color:#1a5fd0!important;border-color:#d6e8ff!important}
+  .job-tag--career{color:#2e7d4f!important;background:#e6f4ea!important;border-color:#e6f4ea!important}
+</style>
+<style id="fx">
+  /* ===== scroll progress bar (transform-only, cheap) ===== */
+  .progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:99;
+    background:linear-gradient(90deg,#2a7fff,#7db4ff);
+    transform:scaleX(0);transform-origin:left;will-change:transform}
+
+  /* ===== nav entrance ===== */
+  .nav{animation:navDrop .7s cubic-bezier(.22,1,.36,1) both .2s}
+  @keyframes navDrop{from{transform:translateY(-100%);opacity:0}to{transform:none;opacity:1}}
+
+  /* ===== hero entrance choreography ===== */
+  .hero__eyebrow{animation:fadeSlide .8s cubic-bezier(.22,1,.36,1) both .35s}
+  .hero__eyebrow::before{transform-origin:left;animation:lineGrow .8s cubic-bezier(.22,1,.36,1) both .5s}
+  @keyframes lineGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  .hero__title .tchar{display:inline-block;opacity:0;transform:translateY(60px) rotate(4deg);
+    animation:charUp .9s cubic-bezier(.22,1,.36,1) both}
+  @keyframes charUp{to{opacity:1;transform:none}}
+  .hero__sub{animation:fadeSlide .9s cubic-bezier(.22,1,.36,1) both 1.15s}
+  .hero__lead{animation:fadeSlide .9s cubic-bezier(.22,1,.36,1) both 1.3s}
+  .hero__scroll{animation:fadeSlide .9s ease both 1.6s}
+  @keyframes fadeSlide{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  .hero__media{animation:mediaReveal 1.2s cubic-bezier(.22,1,.36,1) both .3s}
+  @keyframes mediaReveal{from{clip-path:polygon(100% 0,100% 0,100% 100%,100% 100%);opacity:0}
+    to{clip-path:polygon(22% 0,100% 0,100% 100%,8% 100%);opacity:1}}
+  @media (min-width:821px){
+    .hero__video.ready{animation:slowZoom 24s ease-in-out infinite alternate}
+  }
+  @keyframes slowZoom{from{transform:translate(-50%,-50%) scale(1)}to{transform:translate(-50%,-50%) scale(1.12)}}
+  .hero__vtext{animation:fadeSlide 1s ease both 1.8s}
+  /* mobile: no video download — static photo instead */
+  @media (max-width:820px){
+    .hero__media{background:#0a0f1a url('images/seizou-card.png') 62% 68%/cover no-repeat}
+    .hero__video{display:none}
+  }
+
+  /* accent stroke shimmer */
+  .hero__title .accent{position:relative;background:linear-gradient(120deg,rgba(255,255,255,.15) 30%,rgba(255,255,255,.9) 50%,rgba(255,255,255,.15) 70%);
+    background-size:250% 100%;-webkit-background-clip:text;background-clip:text;
+    animation:shimmer 4s ease-in-out infinite 2s}
+  @keyframes shimmer{0%{background-position:120% 0}55%,100%{background-position:-130% 0}}
+
+
+  /* ===== section heading underline draw ===== */
+  .section__rule{transform:scaleX(0);transform-origin:center;transition:transform .8s cubic-bezier(.22,1,.36,1) .3s}
+  .section__head.in .section__rule{transform:scaleX(1)}
+  .section__en{display:inline-block;opacity:0;letter-spacing:.7em;transition:all .9s cubic-bezier(.22,1,.36,1)}
+  .section__head.in .section__en{opacity:1;letter-spacing:.34em}
+
+
+  /* ===== job card: shine sweep + lift ===== */
+  .job-card{transform-style:preserve-3d;will-change:transform}
+  .job-card::before{content:'';position:absolute;inset:0;z-index:3;pointer-events:none;
+    background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.22) 48%,transparent 62%);
+    transform:translateX(-120%);transition:transform .7s ease}
+  .job-card:hover::before{transform:translateX(120%)}
+  .job-card__num{transition:transform .4s cubic-bezier(.22,1,.36,1),text-shadow .4s}
+  .job-card:hover .job-card__num{transform:translateY(-4px) scale(1.12);text-shadow:0 0 22px rgba(125,180,255,.9)}
+  .job-card__title{transition:letter-spacing .4s ease}
+  .job-card:hover .job-card__title{letter-spacing:.1em}
+
+  /* ===== stats pop ===== */
+  .stats__item{transition:transform .3s ease}
+  .stats__item:hover{transform:translateY(-4px)}
+  .stats__num{display:inline-block}
+
+  /* ===== CTA (static gradient text, no loop) ===== */
+  .cta__title{background:linear-gradient(90deg,#18202f 20%,#1f6fe6 50%,#18202f 80%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+  /* ===== scroll parallax on card images (transform-only) ===== */
+  .job-card__img{transform:translateY(var(--py,0px)) scale(1.16);transition:transform .5s ease-out;will-change:transform}
+  .job-card:hover .job-card__img{transform:translateY(var(--py,0px)) scale(1.24)}
+
+  /* ===== rotating decorative rings (composite-only) ===== */
+  .hero::after{content:'';position:absolute;z-index:2;right:6%;top:12%;width:420px;height:420px;
+    border:1px dashed rgba(255,255,255,.22);border-radius:50%;pointer-events:none;
+    animation:spin 46s linear infinite}
+  .hero::before{content:'';position:absolute;z-index:2;right:22%;bottom:8%;width:200px;height:200px;
+    border:2px dotted rgba(125,180,255,.35);border-radius:50%;pointer-events:none;
+    animation:spinR 28s linear infinite}
+  .hero__content::after{content:'';position:absolute;z-index:-1;left:-140px;bottom:-160px;width:340px;height:340px;
+    border:1px solid rgba(77,155,255,.18);border-top-color:rgba(77,155,255,.55);border-radius:50%;pointer-events:none;
+    animation:spin 14s linear infinite}
+  .hero__content{position:relative}
+  /* rings behind the jobs section */
+  .jobs{overflow:hidden}
+  .jobs::before{content:'';position:absolute;left:-180px;top:220px;width:520px;height:520px;
+    border:1px dashed rgba(42,127,255,.22);border-radius:50%;pointer-events:none;animation:spin 60s linear infinite}
+  .jobs::after{content:'';position:absolute;right:-220px;bottom:140px;width:640px;height:640px;
+    border:1px solid rgba(42,127,255,.12);border-top-color:rgba(42,127,255,.4);border-radius:50%;pointer-events:none;
+    animation:spinR 50s linear infinite}
+  /* ring behind CTA */
+  .cta{overflow:hidden}
+  .cta::before{content:'';position:absolute;left:50%;top:-170px;width:460px;height:460px;margin-left:-230px;
+    border:1px dashed rgba(42,127,255,.3);border-radius:50%;pointer-events:none;animation:spin 36s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes spinR{to{transform:rotate(-360deg)}}
+  @media (max-width:820px){.hero::after{width:250px;height:250px;right:-60px}.hero::before{display:none}}
+
+  /* arrows spin on hover */
+  .job-card__go svg,.cta__btn svg{transition:transform .5s cubic-bezier(.22,1,.36,1)}
+  .job-card:hover .job-card__go svg{transform:translateX(5px) rotate(360deg)}
+  .cta__btn:hover svg{transform:rotate(360deg)}
+
+  /* ===== floating circles everywhere (transform/opacity only) ===== */
+  .job-grid,.stats,.section__head,.cta__title,.cta__sub,.cta__btn,.cta__links{position:relative;z-index:1}
+  .bubble{position:absolute;bottom:-160px;border-radius:50%;pointer-events:none;z-index:0;
+    animation:bubbleUp var(--dur,20s) linear infinite;animation-delay:var(--delay,0s);opacity:0;will-change:transform}
+  .bubble--line{border:1.5px dashed rgba(42,127,255,.35)}
+  .bubble--solid{border:1px solid rgba(42,127,255,.25);background:radial-gradient(circle at 32% 30%,rgba(125,180,255,.16),rgba(42,127,255,.05))}
+  .bubble--dot{background:rgba(42,127,255,.14)}
+  .hero .bubble--line{border-color:rgba(255,255,255,.25)}
+  .hero .bubble--solid{border-color:rgba(125,180,255,.3)}
+  @keyframes bubbleUp{
+    0%{transform:translateY(0) rotate(0deg);opacity:0}
+    8%{opacity:1}
+    92%{opacity:1}
+    100%{transform:translateY(calc(-100vh - 320px)) rotate(360deg);opacity:0}
+  }
+
+  /* ===== card entrance: one full spin ===== */
+  .job-grid .job-card.reveal{opacity:0;transform:none;transition:none}
+  .job-grid .job-card.reveal.in{opacity:1;animation:cardSpin .95s cubic-bezier(.22,1,.36,1) both}
+  .job-grid .job-card.reveal.in:nth-child(4n+2){animation-delay:.1s}
+  .job-grid .job-card.reveal.in:nth-child(4n+3){animation-delay:.2s}
+  .job-grid .job-card.reveal.in:nth-child(4n){animation-delay:.3s}
+  @keyframes cardSpin{
+    from{opacity:0;transform:perspective(1000px) rotateY(360deg) scale(.6) translateY(60px)}
+    60%{opacity:1}
+    to{opacity:1;transform:none}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero__video.ready,.hero__title .accent,.hero::after,.hero::before,.hero__content::after,
+    .jobs::before,.jobs::after,.cta::before{animation:none!important}
+    .job-card__img,.job-card{transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav__logo" href="#top">株式会社オーツカ</a>
+  <div class="nav__menu">
+    <a class="nav__link" href="#top">トップ</a>
+    <a class="nav__link" href="#jobs">募集職種</a>
+    <a class="nav__link" href="#job-description">募集要項</a>
+    <a class="nav__link" href="#cta">採用情報</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero__grid"></div>
+  <div class="hero__media">
+    <video class="hero__video" autoplay muted loop playsinline preload="metadata" data-src="videos/drone.mp4"></video>
+  </div>
+  <div class="hero__vtext">技術で<br>未来を<br>創造する</div>
+  <div class="hero__content">
+    <span class="hero__eyebrow">2027年度 採用情報</span>
+    <h1 class="hero__title">技術で、<br><span class="accent">未来</span>をつくる。</h1>
+    <p class="hero__sub">信頼をカタチに、価値をつなぐ。</p>
+    <p class="hero__lead">株式会社オーツカは、確かな技術力と柔軟な発想で、お客様の課題解決に挑み続けるプロフェッショナル集団です。ともに成長し、未来を創る仲間を募集しています。</p>
+    <a class="hero__scroll" href="#jobs">
+      <span>スクロール</span>
+      <span class="hero__scroll-line"></span>
+    </a>
+  </div>
+</header>
+
+<!-- JOB CATEGORY -->
+<section class="section jobs" id="jobs">
+  <div class="section__head reveal">
+    <h2 class="section__jp">募集職種</h2>
+    <div class="section__rule"></div>
+  </div>
+  <div class="job-filter reveal" role="group" aria-label="募集職種の絞り込み">
+    <button type="button" class="job-filter__btn active" data-filter="all">すべて</button>
+    <button type="button" class="job-filter__btn" data-filter="fresh">新卒</button>
+    <button type="button" class="job-filter__btn" data-filter="career">経験者</button>
+  </div>
+  <div class="job-grid">
+
+    <div class="job-cat reveal"><span class="job-cat__name">製造部</span><span class="job-cat__line"></span></div>
+
+    <a class="job-card reveal" href="seizou" data-fresh="1" data-career="1">
+      <div class="job-card__img" style="background-image:url('images/seizou-card.png')"></div>
+      <div class="job-card__inner">
+        <div class="job-card__num">01</div>
+        <div class="job-card__dept">製造部</div>
+        <div class="job-card__title">製造</div>
+        <div class="job-card__tags"><span class="job-tag job-tag--fresh">新卒</span><span class="job-tag job-tag--career">経験者</span></div>
+        <p class="job-card__desc">製品の組立・加工・材料投入など製造ラインの中核を担います。</p>
+        <span class="job-card__go">業務内容を見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <a class="job-card reveal" href="kensa" data-fresh="1" data-career="1">
+      <div class="job-card__img" style="background-image:url('images/kensa-card.png')"></div>
+      <div class="job-card__inner">
+        <div class="job-card__num">02</div>
+        <div class="job-card__dept">製造部</div>
+        <div class="job-card__title">検査</div>
+        <div class="job-card__tags"><span class="job-tag job-tag--fresh">新卒</span><span class="job-tag job-tag--career">経験者</span></div>
+        <p class="job-card__desc">完成品の寸法・外観・機能を精密にチェック。品質の最終ラインを守ります。</p>
+        <span class="job-card__go">業務内容を見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <a class="job-card reveal" href="hozen" data-fresh="1" data-career="1">
+      <div class="job-card__img" style="background-image:url('images/hozen-card.jpg')"></div>
+      <div class="job-card__inner">
+        <div class="job-card__num">03</div>
+        <div class="job-card__dept">製造部</div>
+        <div class="job-card__title">保全</div>
+        <div class="job-card__tags"><span class="job-tag job-tag--fresh">新卒</span><span class="job-tag job-tag--career">経験者</span></div>
+        <p class="job-card__desc">製造設備の点検・修理・改善を担い、安定した生産ラインを維持します。</p>
+        <span class="job-card__go">業務内容を見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <a class="job-card reveal" href="seisan-gijutsu" data-fresh="1">
+      <div class="job-card__img" style="background-image:url('images/seisan-gijutsu-card.jpg')"></div>
+      <div class="job-card__inner">
+        <div class="job-card__num">04</div>
+        <div class="job-card__dept">製造部</div>
+        <div class="job-card__title">生産技術</div>
+        <div class="job-card__tags"><span class="job-tag job-tag--fresh">新卒</span></div>
+        <p class="job-card__desc">生産プロセスの設計・改善・自動化推進を担います。</p>
+        <span class="job-card__go">業務内容を見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <div class="job-cat reveal"><span class="job-cat__name">営業部</span><span class="job-cat__line"></span></div>
+
+    <a class="job-card reveal" href="eigyo" data-fresh="1">
+      <div class="job-card__img" style="background-image:url('images/eigyo-card.png')"></div>
+      <div class="job-card__inner">
+        <div class="job-card__num">05</div>
+        <div class="job-card__dept">営業部</div>
+        <div class="job-card__title">営業</div>
+        <div class="job-card__tags"><span class="job-tag job-tag--fresh">新卒</span></div>
+        <p class="job-card__desc">既存顧客への提案・新規開拓を通じて、オーツカの製品価値をお客様に届けます。</p>
+        <span class="job-card__go">業務内容を見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <a class="job-card reveal" href="eigyo-jimu" data-fresh="1">
+      <div class="job-card__img" style="background-image:url('images/eigyo-jimu-card.png')"></div>
+      <div class="job-card__inner">
+        <div class="job-card__num">06</div>
+        <div class="job-card__dept">営業部</div>
+        <div class="job-card__title">営業事務</div>
+        <div class="job-card__tags"><span class="job-tag job-tag--fresh">新卒</span></div>
+        <p class="job-card__desc">受発注管理・見積作成・顧客対応など、営業活動を縁の下から支えます。</p>
+        <span class="job-card__go">業務内容を見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <div class="job-cat reveal"><span class="job-cat__name">技術部</span><span class="job-cat__line"></span></div>
+
+    <a class="job-card reveal" href="kaihatsu-gijutsu" data-fresh="1">
+      <div class="job-card__img" style="background-image:url('images/kaihatsu-card.png')"></div>
+      <div class="job-card__inner">
+        <div class="job-card__num">07</div>
+        <div class="job-card__dept">技術部</div>
+        <div class="job-card__title">開発技術</div>
+        <div class="job-card__tags"><span class="job-tag job-tag--fresh">新卒</span></div>
+        <p class="job-card__desc">新製品・新工法の研究開発でイノベーションを通じて会社の未来を切り開きます。</p>
+        <span class="job-card__go">業務内容を見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <div class="job-cat reveal"><span class="job-cat__name">品質保証部</span><span class="job-cat__line"></span></div>
+
+    <a class="job-card reveal" href="qa-customer" data-fresh="1" data-career="1">
+      <div class="job-card__img" style="background-image:url('images/qa-customer-card.png')"></div>
+      <div class="job-card__inner">
+        <div class="job-card__num">08</div>
+        <div class="job-card__dept">品質保証部</div>
+        <div class="job-card__title">品質保証（顧客対応）</div>
+        <div class="job-card__tags"><span class="job-tag job-tag--fresh">新卒</span><span class="job-tag job-tag--career">経験者</span></div>
+        <p class="job-card__desc">クレーム対応・品質改善提案・顧客折衝など、対外的な品質窓口として活躍します。</p>
+        <span class="job-card__go">業務内容を見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <a class="job-card reveal" href="qa-kensa" data-fresh="1" data-career="1">
+      <div class="job-card__img" style="background-image:url('images/qa-kensa-card.png')"></div>
+      <div class="job-card__inner">
+        <div class="job-card__num">09</div>
+        <div class="job-card__dept">品質保証部</div>
+        <div class="job-card__title">品質保証（検査）</div>
+        <div class="job-card__tags"><span class="job-tag job-tag--fresh">新卒</span><span class="job-tag job-tag--career">経験者</span></div>
+        <p class="job-card__desc">出荷前の最終検査・規格適合確認を担当。製品への深い理解と細部への集中力が求められます。</p>
+        <span class="job-card__go">業務内容を見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <div class="job-cat reveal"><span class="job-cat__name">調達部</span><span class="job-cat__line"></span></div>
+
+    <a class="job-card reveal" href="chotatsu" data-fresh="1" data-career="1">
+      <div class="job-card__img" style="background-image:url('images/chotatsu-card.png')"></div>
+      <div class="job-card__inner">
+        <div class="job-card__num">10</div>
+        <div class="job-card__dept">調達部</div>
+        <div class="job-card__title">調達</div>
+        <div class="job-card__tags"><span class="job-tag job-tag--fresh">新卒</span><span class="job-tag job-tag--career">経験者</span></div>
+        <p class="job-card__desc">原材料の調達から購入計画・納期管理・品質管理まで一貫して行います。</p>
+        <span class="job-card__go">業務内容を見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <div class="job-cat reveal"><span class="job-cat__name">オーツカ通商</span><span class="job-cat__line"></span></div>
+
+    <a class="job-card reveal" href="tsusho" data-fresh="1" data-career="1">
+      <div class="job-card__img" style="background-image:url('images/tsusho-card.png')"></div>
+      <div class="job-card__inner">
+        <div class="job-card__num">11</div>
+        <div class="job-card__dept">オーツカ通商</div>
+        <div class="job-card__title">通商</div>
+        <div class="job-card__tags"><span class="job-tag job-tag--fresh">新卒</span><span class="job-tag job-tag--career">経験者</span></div>
+        <p class="job-card__desc">顧客訪問や見積作成・価格交渉から輸出入を含む仕入れ販売まで幅広く担当します。</p>
+        <span class="job-card__go">業務内容を見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <div class="job-cat reveal"><span class="job-cat__name">大塚高分子工業</span><span class="job-cat__line"></span></div>
+
+    <a class="job-card reveal" href="otsuka-koubunshi" data-fresh="1" data-career="1">
+      <div class="job-card__img" style="background-image:url('images/koubunshi-card.png')"></div>
+      <div class="job-card__inner">
+        <div class="job-card__num">12</div>
+        <div class="job-card__dept">大塚高分子工業</div>
+        <div class="job-card__title">大塚高分子工業</div>
+        <div class="job-card__tags"><span class="job-tag job-tag--fresh">新卒</span><span class="job-tag job-tag--career">経験者</span></div>
+        <p class="job-card__desc">リサイクル原料を用いて色付き繊維を製造し、新規カラーや新素材の試作開発を行います。</p>
+        <span class="job-card__go">業務内容を見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- STATS -->
+  <div class="stats reveal" id="stats">
+    <div class="stats__item"><div class="stats__num">12<span style="font-size:.55em">+</span></div><div class="stats__label">募集職種</div></div>
+    <div class="stats__item"><div class="stats__num">7</div><div class="stats__label">部署</div></div>
+    <div class="stats__item"><div class="stats__num">新卒<span style="font-size:.5em"> / </span>経験者</div><div class="stats__label">両方募集中</div></div>
+  </div>
+</section>
+
+<!-- JOB DESCRIPTION -->
+<section class="section jd" id="job-description">
+  <div class="section__head reveal">
+    <h2 class="section__jp">募集要項</h2>
+    <div class="section__rule"></div>
+  </div>
+  <div class="jd-grid">
+
+    <div class="jd-card reveal">
+      <div class="jd-card__head"><span class="jd-card__eyebrow">新卒採用</span><span class="jd-card__badge">募集要項（新卒）</span></div>
+      <ul class="jd-list">
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span class="jd-row__label">応募資格</span></div><div class="jd-row__value">2027年卒<br>（大学、短大、高校の卒業見込者）</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="jd-row__label">採用人数</span></div><div class="jd-row__value">技術職、営業職、製造職、事務職、営業事務職：若干名</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span class="jd-row__label">提出書類</span></div><div class="jd-row__value">履歴書、成績証明書、卒業見込証明書</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><span class="jd-row__label">選出方法</span></div><div class="jd-row__value">書類選考、筆記試験、役員面接、社長面接</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span class="jd-row__label">初任給</span></div><div class="jd-row__value">（2027年4月卒）<br>大学院卒：245,000円、大学卒：226,000円<br>短大卒：207,000円、高校卒：192,000円<br>※精勤手当6,000円含む</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><span class="jd-row__label">昇給</span></div><div class="jd-row__value">年1回（5月）</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></span><span class="jd-row__label">賞与</span></div><div class="jd-row__value">年2回(7月・12月) ※業績に応じて年3回(4月・7月・12月)<br>令和8年度賞与実績あり</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="jd-row__label">勤務地</span></div><div class="jd-row__value">本社工場、各務原工場、関ヶ原工場、九州工場<br>※転勤有り</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="jd-row__label">勤務時間</span></div><div class="jd-row__value">8:00～17:00<br>※製造職(製造、検査)は交代勤務制あり</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><span class="jd-row__label">休日</span></div><div class="jd-row__value">週休2日制、年間122日(計画年休5日含む)</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span class="jd-row__label">休暇</span></div><div class="jd-row__value">GW、夏季、年末年始、有給休暇、慶弔、育児・介護休暇、特別休暇(配偶者の分娩/永年勤続表彰/新入社員休暇)</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span class="jd-row__label">福利厚生</span></div><div class="jd-row__value">各種社会保険、退職年金制度、慰安旅行実施実績あり、永年勤続表彰、奨学金返還制度<br>リゾートマンション(エクシブ鳥羽・アネックス、エクシブ蓼科、グランドエクシブ浜名湖、エクシブ京都八瀬離宮)【令和8年度実績】親睦会費10,000円支給</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span class="jd-row__label">奨学金<br>返還制度</span></div><div class="jd-row__value">対象者には奨学金の返還を支援する制度があります。<br><a href="https://shogakukin.jinzai-gifu.jp/company/?c_keyword=%E3%82%AA%E3%83%BC%E3%83%84%E3%82%AB&c_year=&c_industry=&c_area=&c_course01=&c_course02=" target="_blank" rel="noopener">詳しくはコチラ →</a></div></li>
+      </ul>
+    </div>
+
+    <div class="jd-card jd-card--career reveal">
+      <div class="jd-card__head"><span class="jd-card__eyebrow">経験者採用</span><span class="jd-card__badge">募集要項（経験者）</span></div>
+      <ul class="jd-list">
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span class="jd-row__label">応募資格</span></div><div class="jd-row__value">経験者採用（高卒以上）</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="jd-row__label">採用人数</span></div><div class="jd-row__value">技術職、営業職、製造職、事務職、営業事務職：若干名</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span><span class="jd-row__label">提出書類</span></div><div class="jd-row__value">履歴書、職務経歴書</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><span class="jd-row__label">選出方法</span></div><div class="jd-row__value">書類選考、筆記試験、役員面接</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span class="jd-row__label">初任給</span></div><div class="jd-row__value">経験者採用者は年齢・経験を考慮し決定。<br>※試用期間中はパートタイマー対応（時給1200円）</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span><span class="jd-row__label">昇給</span></div><div class="jd-row__value">年1回（5月）</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></span><span class="jd-row__label">賞与</span></div><div class="jd-row__value">年2回(7月・12月) ※業績に応じて年3回(4月・7月・12月)<br>令和8年度賞与実績あり</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="jd-row__label">勤務地</span></div><div class="jd-row__value">本社工場、各務原工場、関ヶ原工場、九州工場<br>※転勤有り</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="jd-row__label">勤務時間</span></div><div class="jd-row__value">8:00～17:00<br>※製造職(製造、検査)は交代勤務制あり</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><span class="jd-row__label">休日</span></div><div class="jd-row__value">週休2日制、年間122日(計画年休5日含む)</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span class="jd-row__label">休暇</span></div><div class="jd-row__value">GW、夏季、年末年始、有給休暇、慶弔、育児・介護休暇、特別休暇(配偶者の分娩/永年勤続表彰/新入社員休暇)</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span class="jd-row__label">福利厚生</span></div><div class="jd-row__value">各種社会保険、退職年金制度、慰安旅行実施実績あり、永年勤続表彰、奨学金返還制度<br>リゾートマンション(エクシブ鳥羽・アネックス、エクシブ蓼科、グランドエクシブ浜名湖、エクシブ京都八瀬離宮)【令和8年度実績】親睦会費10,000円支給</div></li>
+        <li class="jd-row"><div class="jd-row__icon-label"><span class="jd-row__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span class="jd-row__label">奨学金<br>返還制度</span></div><div class="jd-row__value">対象者には奨学金の返還を支援する制度があります。<br><a href="https://shogakukin.jinzai-gifu.jp/company/?c_keyword=%E3%82%AA%E3%83%BC%E3%83%84%E3%82%AB&c_year=&c_industry=&c_area=&c_course01=&c_course02=" target="_blank" rel="noopener">詳しくはコチラ →</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="cta">
+  <h2 class="cta__title reveal">一緒に、未来をつくろう。</h2>
+  <p class="cta__sub reveal">各職種の詳細情報・応募方法は各ページからご確認ください。<br>ご不明な点はお気軽にお問い合わせください。</p>
+  <a class="cta__btn reveal" href="#jobs">募集職種を見る
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+  <div class="cta__links reveal">
+    <a class="cta__link" href="https://shogakukin.jinzai-gifu.jp/company/?c_keyword=%E3%82%AA%E3%83%BC%E3%83%84%E3%82%AB&c_year=&c_industry=&c_area=&c_course01=&c_course02=" target="_blank" rel="noopener">
+      奨学金返還制度について
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">© 株式会社オーツカ　採用サイト</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+
+  // sync job-description row heights between the two cards (新卒/経験者) so labels line up
+  function syncJdRows() {
+    const cards = document.querySelectorAll('.jd-card');
+    if (cards.length < 2) return;
+    const rowsA = cards[0].querySelectorAll('.jd-row');
+    const rowsB = cards[1].querySelectorAll('.jd-row');
+    const n = Math.min(rowsA.length, rowsB.length);
+    if (innerWidth <= 900) {
+      for (let i = 0; i < n; i++) { rowsA[i].style.minHeight = ''; rowsB[i].style.minHeight = ''; }
+      return;
+    }
+    for (let i = 0; i < n; i++) { rowsA[i].style.minHeight = ''; rowsB[i].style.minHeight = ''; }
+    for (let i = 0; i < n; i++) {
+      const h = Math.max(rowsA[i].offsetHeight, rowsB[i].offsetHeight);
+      rowsA[i].style.minHeight = h + 'px';
+      rowsB[i].style.minHeight = h + 'px';
+    }
+  }
+  let jdResizeTimer;
+  addEventListener('resize', () => { clearTimeout(jdResizeTimer); jdResizeTimer = setTimeout(syncJdRows, 120); });
+  addEventListener('load', syncJdRows);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncJdRows);
+  setTimeout(syncJdRows, 300);
+  // hero video: load only on desktop (saves ~52MB on mobile)
+  const heroVideo = document.querySelector('.hero__video');
+  if (heroVideo && matchMedia('(min-width:821px)').matches) {
+    const showVideo = () => heroVideo.classList.add('ready');
+    heroVideo.addEventListener('playing', showVideo);
+    heroVideo.addEventListener('canplay', showVideo);
+    heroVideo.src = heroVideo.dataset.src;
+    heroVideo.play().catch(() => {});
+  }
+  const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll('.reveal, .section__head').forEach((el, i) => { el.style.transitionDelay = ((i % 4) * 60) + 'ms'; io.observe(el); });
+
+  // scroll progress bar + card parallax (single rAF-throttled handler, transform-only)
+  const bar = document.createElement('div'); bar.className = 'progress'; document.body.appendChild(bar);
+  const pImgs = [...document.querySelectorAll('.job-card__img')];
+  let ticking = false;
+  const onScroll = () => {
+    ticking = false;
+    const h = document.documentElement, vh = innerHeight;
+    bar.style.transform = 'scaleX(' + (h.scrollTop / (h.scrollHeight - h.clientHeight)) + ')';
+    for (const img of pImgs) {
+      const r = img.parentElement.getBoundingClientRect();
+      if (r.bottom < -60 || r.top > vh + 60) continue;
+      const p = (r.top + r.height / 2 - vh / 2) / vh;   // -0.5〜0.5 in view
+      img.style.setProperty('--py', (p * 26).toFixed(1) + 'px');
+    }
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  // hero title: split chars for staggered rise
+  document.querySelectorAll('.hero__title').forEach(t => {
+    let idx = 0;
+    const walk = (node) => {
+      [...node.childNodes].forEach(n => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          [...n.textContent].forEach(ch => {
+            if (ch === '\n') return;
+            const s = document.createElement('span');
+            s.className = 'tchar'; s.textContent = ch;
+            s.style.animationDelay = (0.45 + idx * 0.055) + 's'; idx++;
+            frag.appendChild(s);
+          });
+          node.replaceChild(frag, n);
+        } else if (n.nodeType === 1 && n.tagName !== 'BR') walk(n);
+      });
+    };
+    walk(t);
+  });
+
+  // stats count-up
+  const easeOut = x => 1 - Math.pow(1 - x, 3);
+  const countUp = el => {
+    const target = parseInt(el.dataset.count, 10);
+    const t0 = performance.now();
+    const tick = now => {
+      const p = Math.min((now - t0) / 1400, 1);
+      el.textContent = Math.round(easeOut(p) * target);
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const statIO = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { countUp(e.target); statIO.unobserve(e.target); }
+  }), { threshold: .6 });
+  document.querySelectorAll('.stats__num').forEach(n => {
+    const m = n.textContent.match(/^\d+/);
+    if (!m) return;
+    const span = [...n.childNodes].find(c => c.nodeType === 3);
+    const num = document.createElement('span');
+    num.dataset.count = m[0]; num.textContent = '0';
+    n.replaceChild(num, span);
+    statIO.observe(num);
+  });
+
+  // floating background circles
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    const kinds = ['bubble--line', 'bubble--solid', 'bubble--dot'];
+    const seed = (sec, n) => {
+      for (let i = 0; i < n; i++) {
+        const b = document.createElement('span');
+        b.className = 'bubble ' + kinds[i % 3];
+        const size = 18 + Math.random() * 120;
+        b.style.width = b.style.height = size.toFixed(0) + 'px';
+        b.style.left = (Math.random() * 96) + '%';
+        b.style.setProperty('--dur', (14 + Math.random() * 18).toFixed(1) + 's');
+        b.style.setProperty('--delay', (-Math.random() * 26).toFixed(1) + 's');
+        sec.appendChild(b);
+      }
+    };
+    const hero = document.querySelector('.hero');
+    const jobs = document.querySelector('.jobs');
+    const cta = document.querySelector('.cta');
+    if (hero) seed(hero, 8);
+    if (jobs) seed(jobs, 14);
+    if (cta) seed(cta, 8);
+  }
+
+  // 新卒/経験者 filter
+  const filterBtns = document.querySelectorAll('.job-filter__btn');
+  const allCards = document.querySelectorAll('.job-card');
+  const allCats = document.querySelectorAll('.job-cat');
+  function applyJobFilter(mode) {
+    allCards.forEach(card => {
+      const show = mode === 'all' || card.dataset[mode] === '1';
+      card.classList.toggle('is-hidden', !show);
+    });
+    allCats.forEach(cat => {
+      let el = cat.nextElementSibling, hasVisible = false;
+      while (el && !el.classList.contains('job-cat')) {
+        if (el.classList.contains('job-card') && !el.classList.contains('is-hidden')) { hasVisible = true; break; }
+        el = el.nextElementSibling;
+      }
+      cat.classList.toggle('is-hidden', !hasVisible);
+    });
+  }
+  filterBtns.forEach(btn => btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyJobFilter(btn.dataset.filter);
+  }));
+
+  // job card 3D tilt
+  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if (fine) document.querySelectorAll('.job-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5;
+      const y = (e.clientY - r.top) / r.height - .5;
+      card.style.transform = `translateY(-6px) perspective(800px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+</script>
+<style id="line-fab-style">
+  .line-fab { position: fixed; right: 22px; bottom: 22px; z-index: 90; overflow: hidden;
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #06C755; color: #fff; text-decoration: none;
+    padding: 13px 20px 13px 14px; border-radius: 999px;
+    font-family: 'Noto Sans JP', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .02em;
+    box-shadow: 0 10px 28px rgba(6,199,85,.42);
+    transition: transform .2s, box-shadow .2s;
+    animation: lineFabPulse 2.6s ease-in-out infinite, lineFabBounce 5s ease-in-out infinite; }
+  .line-fab:hover { transform: translateY(-3px) !important; box-shadow: 0 16px 36px rgba(6,199,85,.55); animation-play-state: paused; }
+  .line-fab::after { content: ''; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,.55), transparent);
+    transform: skewX(-20deg); animation: lineFabShine 3.4s ease-in-out infinite; pointer-events: none; }
+  .line-fab__icon-wrap { position: relative; display: inline-flex; flex-shrink: 0; }
+  .line-fab__icon { width: 30px; height: 30px; display: block; border-radius: 7px; }
+  .line-fab__badge { position: absolute; top: -4px; right: -4px; width: 13px; height: 13px;
+    background: #ff3b30; border-radius: 50%; border: 2px solid #fff;
+    animation: lineFabBadge 1.7s ease-in-out infinite; z-index: 2; }
+  @keyframes lineFabPulse { 0%,100%{box-shadow:0 10px 28px rgba(6,199,85,.42)} 50%{box-shadow:0 10px 28px rgba(6,199,85,.42),0 0 0 8px rgba(6,199,85,.14)} }
+  @keyframes lineFabBounce {
+    0%, 78%, 100% { transform: translateY(0) rotate(0deg); }
+    82% { transform: translateY(-9px) rotate(-5deg); }
+    86% { transform: translateY(0) rotate(4deg); }
+    90% { transform: translateY(-4px) rotate(-2deg); }
+    94% { transform: translateY(0) rotate(0deg); }
+  }
+  @keyframes lineFabShine { 0%,15%{left:-60%} 45%,100%{left:130%} }
+  @keyframes lineFabBadge { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
+  @media (max-width: 560px) {
+    .line-fab { right: 14px; bottom: 14px; padding: 12px 18px 12px 12px; font-size: 13px; }
+    .line-fab__icon { width: 26px; height: 26px; }
+    .line-fab__badge { top: -3px; right: -3px; width: 11px; height: 11px; }
+  }
+  .line-fab__label--short { display: none; }
+  @media (min-width: 821px) {
+    .line-fab { right: 36px; bottom: 36px; width: 112px; height: 112px; padding: 0;
+      border-radius: 50%; flex-direction: column; justify-content: center; gap: 6px; }
+    .line-fab__icon { width: 44px; height: 44px; }
+    .line-fab__badge { top: -4px; right: -4px; width: 15px; height: 15px; }
+    .line-fab__label--full { display: none; }
+    .line-fab__label--short { display: block; font-size: 12px; line-height: 1.2; letter-spacing: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { .line-fab, .line-fab::after, .line-fab__badge { animation: none !important; } }
+</style>
+<a class="line-fab" href="https://line.me/R/ti/p/@918iaxtu?oat_content=url&amp;ts=03241634" target="_blank" rel="noopener" aria-label="LINEで応募">
+  <span class="line-fab__icon-wrap">
+    <svg class="line-fab__icon" viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="#06C755"/><path fill="#fff" d="M24 10c-8.28 0-15 5.79-15 12.94 0 4.44 2.6 8.35 6.6 10.66-.29 1.06-1.05 3.84-1.2 4.44-.19.75.28.74.58.54.24-.16 3.83-2.6 5.38-3.65.9.13 1.83.2 2.64.2 8.28 0 15-5.79 15-12.94S32.28 10 24 10z"/></svg>
+    <span class="line-fab__badge" aria-hidden="true"></span>
+  </span>
+  <span class="line-fab__label--full">LINEで応募</span>
+  <span class="line-fab__label--short">LINEで<br>応募</span>
+</a>
+</body>
+</html>
